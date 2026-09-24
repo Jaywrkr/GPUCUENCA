@@ -711,6 +711,15 @@ body.in-u>*:not(#uview):not(#tip):not(script){display:none!important}
 .map svg{min-width:600px}
 .flow{min-width:700px}
 .fn{min-width:78px;padding:8px;font-size:12.5px}
+
+.cm tr.dev td{background:#fdecec}
+.cm td:nth-child(1){font:500 12px var(--mono);color:var(--accent)}
+.cm td:nth-child(3){min-width:260px}
+.cm td:nth-child(5){font-size:12.5px;white-space:nowrap}
+#e4 a,.cm a{color:var(--accent)}
+.two ul small{color:var(--ink-3)}
+.plain,.b p{overflow-wrap:anywhere}
+td small{margin-top:4px}
 </style>
 </head>
 <body>
@@ -740,7 +749,7 @@ body.in-u>*:not(#uview):not(#tip):not(script){display:none!important}
     <a class="tab done" href="#e1" role="tab" id="t1" aria-controls="e1"><span class="d">01</span>Entender<span class="st">Hecho</span></a>
     <a class="tab pend" href="#e2" role="tab" id="t2" aria-controls="e2"><span class="d">02</span>Aclarar<span class="st">Pendiente</span></a>
     <a class="tab done" href="#e3" role="tab" id="t3" aria-controls="e3"><span class="d">03</span>Dimensionar<span class="st">Preliminar</span></a>
-    <a class="tab todo" href="#e4" role="tab" id="t4" aria-controls="e4"><span class="d">04</span>Arquitectura<span class="st">Siguiente</span></a>
+    <a class="tab pend" href="#e4" role="tab" id="t4" aria-controls="e4"><span class="d">04</span>Cumplimiento<span class="st">En curso</span></a>
     <a class="tab todo" href="#e5" role="tab" id="t5" aria-controls="e5"><span class="d">05</span>BOM + licencias<span class="st">Por hacer</span></a>
     <a class="tab todo" href="#e6" role="tab" id="t6" aria-controls="e6"><span class="d">06</span>Servicios + PoC<span class="st">Por hacer</span></a>
     <a class="tab todo" href="#e7" role="tab" id="t7" aria-controls="e7"><span class="d">07</span>Propuesta<span class="st">Por hacer</span></a>
@@ -1178,7 +1187,7 @@ Coresolutions</pre>
   <section class="sec">
     <header><span class="lbl">3.2</span><h2>Stack Core</h2><p>Cada capa con una marca que ya vendemos.</p></header>
     <div class="stack">
-      <div class="layer"><span class="lbl">Servidores GPU</span><span class="brand">Lenovo ThinkSystem</span><span class="what">SR650 V4 · <dfn data-k="sr650a">SR650a V4</dfn> · <dfn data-k="sr675">SR675 V3</dfn>. Soporte y repuestos en Ecuador.</span><span class="tag core">Core</span></div>
+      <div class="layer"><span class="lbl">Servidores GPU</span><span class="brand">Lenovo ThinkSystem</span><span class="what"><dfn data-k="sr650i">SR650i V4</dfn> · <dfn data-k="sr650a">SR650a V4</dfn> · <dfn data-k="sr675">SR675 V3</dfn> (los únicos que aceptan esta GPU). Soporte y repuestos en Ecuador.</span><span class="tag core">Core</span></div>
       <div class="layer"><span class="lbl">GPU</span><span class="brand">NVIDIA vía Lenovo</span><span class="what"><dfn data-k="rtx">RTX PRO 6000 BSE</dfn> como opción de Lenovo (4X67B09287). Se compra con el servidor.</span><span class="tag core">vía Lenovo</span></div>
       <div class="layer"><span class="lbl">Virtualización</span><span class="brand">VMware VCF / VVF</span><span class="what"><dfn data-k="vgpu">vGPU</dfn> para VMs y <dfn data-k="vks">VKS</dfn> para contenedores. Ya desplegamos VCF 9.</span><span class="tag core">Core</span></div>
       <div class="layer"><span class="lbl">Respaldo</span><span class="brand">Veeam</span><span class="what">Backup &amp; Replication para VMs. <dfn data-k="kasten">Kasten</dfn> si hay Kubernetes.</span><span class="tag core">Core</span></div>
@@ -1218,7 +1227,7 @@ Coresolutions</pre>
             <tr><th></th><th>Producción</th><th>Academia</th><th>Único</th></tr>
           </thead>
           <tbody>
-            <tr class="cand"><td>Modelo Lenovo</td><td><b>SR650 V4</b> <small>2U · 2 GPUs a 600 W</small></td><td><b><dfn data-k="sr650a">SR650a V4</dfn></b> <small>2U · crece a 4 GPUs</small></td><td><b>SR650a V4</b> o <b><dfn data-k="sr675">SR675 V3</dfn></b> <small>2U a 450 W · 3U a 600 W</small></td></tr>
+            <tr class="cand"><td>Modelo Lenovo</td><td><b><dfn data-k="sr650i">SR650i V4</dfn></b> <small>2U · 2 GPUs a 600 W · armado de fábrica</small></td><td><b><dfn data-k="sr650a">SR650a V4</dfn></b> <small>2U · crece a 4 GPUs</small></td><td><b>SR650a V4</b> o <b><dfn data-k="sr675">SR675 V3</dfn></b> <small>2U a 450 W · 3U a 600 W</small></td></tr>
             <tr><td>GPUs</td><td class="d">2 × 96 GB</td><td class="d">2 × 96 GB <small>crece a 4</small></td><td class="d">4 × 96 GB</td></tr>
             <tr><td><dfn data-k="cpu">CPU</dfn></td><td class="d">2 × 32 núcleos</td><td class="d">2 × 32 núcleos</td><td class="d">2 × 48 núcleos</td></tr>
             <tr><td><dfn data-k="ram">RAM</dfn></td><td class="d">512 GB</td><td class="d">512 GB</td><td class="d">1 TB</td></tr>
@@ -1228,6 +1237,7 @@ Coresolutions</pre>
             <tr><td><dfn data-k="psu">Fuentes</dfn></td><td class="d">2 × ≥ 2 000 W</td><td class="d">2 × ≥ 2 700 W</td><td class="d">redundantes ≥ 2 700 W</td></tr>
             <tr><td>Energía est.</td><td class="d">~2.1 kW</td><td class="d">~2.1 kW</td><td class="d">~3.4 kW</td></tr>
             <tr class="alt"><td>Alternativa</td><td>HPE DL380a Gen12</td><td>HPE DL380a Gen12</td><td>HPE DL380a Gen12 <small>4U</small></td></tr>
+            <tr class="alt"><td colspan="4">Corregido en Etapa 04: el SR650 V4 no soporta esta GPU. Producción va en SR650i V4.</td></tr>
           </tbody>
         </table>
       </div>
@@ -1240,7 +1250,7 @@ Coresolutions</pre>
     <div class="enr">
       <div class="er"><span class="n">B · SR650a V4 · GPUs a 450 W</span><div class="bar"><i style="width:35%"></i></div><span class="d">2.8 kW</span></div>
       <div class="er"><span class="n">B · SR675 V3 · GPUs a 600 W</span><div class="bar"><i style="width:42.5%"></i></div><span class="d">3.4 kW</span></div>
-      <div class="er"><span class="n">A · SR650 V4 + SR650a V4</span><div class="bar"><i style="width:52.5%"></i></div><span class="d">4.2 kW</span></div>
+      <div class="er"><span class="n">A · SR650i V4 + SR650a V4</span><div class="bar"><i style="width:52.5%"></i></div><span class="d">4.2 kW</span></div>
       <div class="er"><span class="n">A · academia crecida a 4 GPUs</span><div class="bar"><i style="width:68.75%"></i></div><span class="d">5.5 kW</span></div>
       <div class="er scale"><span class="n"></span><div class="ticks"><span>0</span><span>2</span><span>4</span><span>6</span><span>8 kW</span></div><span class="d"></span></div>
       <p class="plain"><b>Ojo:</b> en SR650a V4 las 4 GPUs van <dfn data-k="cap">limitadas a 450 W</dfn>: consume menos y rinde algo menos. SR675 V3 las deja a 600 W, ocupa 3U y crece hasta 8.</p>
@@ -1301,23 +1311,158 @@ Coresolutions</pre>
     </div>
   </section>
 
-  <div class="snav"><a class="btn" href="#e2">← Etapa 02</a><a class="btn pri" href="#e4">Etapa 04 · Arquitectura →</a></div>
+  <div class="snav"><a class="btn" href="#e2">← Etapa 02</a><a class="btn pri" href="#e4">Etapa 04 · Cumplimiento →</a></div>
   </div>
 </div>
 
 <!-- ===================== ETAPA 4–7 ===================== -->
 <div class="stage" id="e4" role="tabpanel" aria-labelledby="t4" hidden>
-  <div class="shead"><div class="in"><span class="num">ETAPA 04</span><div><h2>Arquitectura</h2><p>Elegir la combinación que recomienda Core y dibujarla.</p></div><span class="status todo">Siguiente</span></div></div>
+  <div class="shead"><div class="in"><span class="num">ETAPA 04</span><div><h2>Cómo cumplimos con Lenovo</h2><p>Cada requisito del documento contra el producto Lenovo que lo cumple, con su fuente oficial.</p></div><span class="status pend">En curso</span></div></div>
   <div class="in">
+
   <section class="sec">
-    <header><span class="lbl">4.1</span><h2>Qué se decide</h2><p>Pendiente.</p></header>
-    <ol class="todo-list">
-      <li><span>Opción A o B<small>Tendencia: A. Aísla de verdad y el servidor de academia crece sin cambiarlo.</small></span></li>
-      <li><span>Cómo repartir las GPUs: VMware vGPU, <dfn data-k="vks">VKS</dfn> u <dfn data-k="openshift">OpenShift</dfn><small>Candidata fuerte: VMware + VKS. Mantiene lo que DTIC conoce y recibe los contenedores de GCP casi directo.</small></span></li>
-      <li><span>Red y seguridad<small>VLANs, Aruba si hace falta, Check Point entre producción y academia.</small></span></li>
-      <li><span>Diagrama final<small>Físico (rack, cables) y lógico (VLANs, servicios).</small></span></li>
-    </ol>
+    <header><span class="lbl">4.1</span><h2>Veredicto</h2><p>Revisado contra Lenovo Press y NVIDIA, sep 2026.</p></header>
+    <div class="col">
+      <div class="res">
+        <div><span class="v">26 / 32</span><span class="lbl">Cumplen</span></div>
+        <div><span class="v">5</span><span class="lbl">Cumplen si Lenovo confirma</span></div>
+        <div><span class="v">1</span><span class="lbl">Desviación declarable</span></div>
+        <div><span class="v">0</span><span class="lbl">Sin solución</span></div>
+      </div>
+      <p class="plain"><b>En simple:</b> sí podemos cumplirlo con Lenovo. La pieza central es el servidor <b>ThinkSystem SR650a V4</b> con GPU <b>RTX PRO 6000 Blackwell Server Edition</b>. Lenovo incluso vende una versión armada de fábrica, el <b>SR650i V4</b>, que coincide casi exacto con el servidor de producción que pide el documento. La única desviación es el ancho de banda, que el documento marca como referencial.</p>
+      <div class="note"><span class="lbl">Corrección</span><p>La Etapa 3 proponía un SR650 V4 para producción. Lenovo <b>no soporta</b> esta GPU en el SR650 V4: solo en el <b>SR650a V4</b> (y SR650i V4) y en el <b>SR675 V3</b>. Ya quedó corregido.</p></div>
+    </div>
   </section>
+
+  <section class="sec">
+    <header><span class="lbl">4.2</span><h2>Plataforma Lenovo</h2><p>Qué servidores aceptan esta GPU, según Lenovo.</p></header>
+    <div class="col">
+      <div class="tw">
+        <table class="spec" style="min-width:680px">
+          <thead><tr><th>Servidor</th><th>Tamaño</th><th>RTX PRO 6000 soportadas</th><th>CPU</th><th>Encaja en</th></tr></thead>
+          <tbody>
+            <tr class="cand"><td><b><dfn data-k="sr650i">SR650i V4</dfn></b><small>7DGDCTO2WW · modelo fijo</small></td><td class="d">2U</td><td class="d">2 × 600 W</td><td class="d">2 × Xeon 6530P 32C</td><td>A · servidor producción</td></tr>
+            <tr class="cand"><td><b><dfn data-k="sr650a">SR650a V4</dfn></b><small>7DGD · configurable</small></td><td class="d">2U</td><td class="d">2 × 600 W <small>o</small> 4 × 450 W</td><td class="d">2 × Xeon 6 P-core</td><td>A · academia · B · único</td></tr>
+            <tr><td><b><dfn data-k="sr675">SR675 V3</dfn></b><small>7D9Q / 7D9R</small></td><td class="d">3U</td><td class="d">hasta 8 × 600 W</td><td class="d">2 × AMD EPYC 5.ª gen</td><td>B · si piden 600 W o crecer a 6+</td></tr>
+            <tr class="alt"><td>SR650 V4</td><td class="d">2U</td><td class="d">No soportada</td><td class="d">—</td><td>Descartado</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="plain"><b>Fuente:</b> tabla de servidores soportados de la guía de la GPU: “RTX PRO 6000 GPU is only supported on SR650a V4 (7DGCCTO2WW/7DGCCTO4WW/7DGDCTO2WW/7DGDCTO4WW)”; SR675 V3 “supported with 5th Gen AMD EPYC processors only”. <a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263 ↗</a></p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <header><span class="lbl">4.3</span><h2>Configuración propuesta</h2><p>Por opción. Números de parte de Lenovo Press.</p></header>
+    <div class="col">
+      <div class="tw">
+        <table class="spec">
+          <thead>
+            <tr><th></th><th colspan="2" class="grp">Opción A · 2 servidores</th><th class="grp">Opción B · 1 servidor</th></tr>
+            <tr><th></th><th>Producción</th><th>Academia</th><th>Único</th></tr>
+          </thead>
+          <tbody>
+            <tr class="cand"><td>Modelo</td><td><b>SR650i V4</b><small>7DGDCTO2WW · CF3G · fijo</small></td><td><b>SR650a V4</b><small>7DGD CTO</small></td><td><b>SR650a V4</b><small>7DGD CTO</small></td></tr>
+            <tr><td>GPU</td><td class="d">2 × RTX PRO 6000 600 W<small>4X67B09287 · CBK8</small></td><td class="d">2 × RTX PRO 6000 450 W<small>4X67B09287 · CHWT · crece a 4</small></td><td class="d">4 × RTX PRO 6000 450 W<small>4X67B09287 · CHWT</small></td></tr>
+            <tr><td>CPU</td><td class="d">2 × Xeon 6530P 32C 225 W</td><td class="d">2 × Xeon 6 (≥ 24C)</td><td class="d">2 × Xeon 6 (≥ 32C)</td></tr>
+            <tr><td>RAM</td><td class="d">512 GB · 8 × 64 GB 6400</td><td class="d">512 GB</td><td class="d">1 TB</td></tr>
+            <tr><td>Arranque</td><td class="d">2 × 960 GB M.2 NVMe · RAID 1</td><td class="d">2 × 960 GB M.2 · RAID 1</td><td class="d">2 × 960 GB M.2 · RAID 1</td></tr>
+            <tr><td>NVMe datos</td><td class="d">2 × 3.84 TB U.2</td><td class="d">4 × 3.84 TB U.2</td><td class="d">4 × 3.84 TB U.2</td></tr>
+            <tr><td>Red</td><td class="d">Broadcom 57414 10/25GbE SFP28 · BK1H</td><td class="d">Broadcom 57414 · BK1H</td><td class="d">2 × Broadcom 57414</td></tr>
+            <tr><td>Ópticas</td><td class="d">SFP+ 10G SR (fibra)</td><td class="d">SFP+ 10G SR</td><td class="d">SFP+ 10G SR</td></tr>
+            <tr><td>Fuentes</td><td class="d">2 × 3200 W Titanium · 230 V</td><td class="d">2 × 3200 W · 230 V</td><td class="d">2 × 3200 W · 230 V</td></tr>
+            <tr><td>Garantía</td><td class="d">3 años base + 2 de extensión</td><td class="d">3 + 2 años</td><td class="d">3 + 2 años</td></tr>
+            <tr><td>Energía est.</td><td class="d">~2.1 kW</td><td class="d">~1.9 kW <small>~2.8 kW con 4 GPU</small></td><td class="d">~2.8 kW</td></tr>
+            <tr><td>Rack</td><td colspan="2" class="d">4U en total</td><td class="d">2U</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="plain"><b>Por qué así:</b> el SR650i V4 ya viene armado de fábrica con exactamente lo que pide producción. Para academia usamos el SR650a V4 configurable con la versión de GPU de 450 W, que es la que Lenovo permite poner de a 4 en el mismo servidor: arranca con 2 y crece a 4 si piden los 16 estudiantes con GPU propia. Fuentes: <a href="https://lenovopress.lenovo.com/lp2128-thinksystem-sr650a-v4-server" target="_blank" rel="noopener">LP2128 ↗</a> · <a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263 ↗</a></p>
+      <p class="plain"><b>Energía:</b> estimación nuestra (GPUs + CPUs + resto), no dato de Lenovo. Ambas opciones quedan bajo 8 kW.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <header><span class="lbl">4.4</span><h2>Matriz de cumplimiento</h2><p>Requisito por requisito. Toca la fuente para abrirla.</p></header>
+    <div class="tw">
+      <table class="t-min cm">
+        <thead><tr><th>§</th><th>Requisito</th><th>Cómo lo cumplimos</th><th>Estado</th><th>Fuente</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Producción y academia no comparten GPU física</td><td>A: una caja por rol. B: GPU 0–1 producción, GPU 2–3 academia</td><td><span class="tag ok">Cumple</span></td><td>Diseño</td></tr>
+          <tr><td>1</td><td>VLAN dedicada</td><td>Puertos 10/25GbE en trunk con VLANs separadas</td><td><span class="tag ok">Cumple</span></td><td>Configuración</td></tr>
+          <tr><td>1</td><td>Rack ≤ 8 kW</td><td>A ~4.0 kW · B ~2.8 kW (estimado)</td><td><span class="tag ok">Cumple</span></td><td>Estimación Core</td></tr>
+          <tr><td>1</td><td>10 Gb por fibra al storage</td><td>Broadcom 57414 SFP28 + ópticas SFP+ 10G SR</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2128-thinksystem-sr650a-v4-server" target="_blank" rel="noopener">LP2128</a></td></tr>
+          <tr><td>1</td><td>Integrarse con VMware vSphere</td><td>SR650a V4 certificado para ESXi 9.0</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/osig" target="_blank" rel="noopener">OSIG</a></td></tr>
+          <tr><td>3.1</td><td>≥ 96 GB VRAM con ECC</td><td>96 GB GDDR7 con ECC</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td></tr>
+          <tr class="dev"><td>3.1</td><td>≥ 1.7 TB/s (referencial)</td><td>Hasta 1597 GB/s (~1.6 TB/s)</td><td><span class="tag crit">Desviación</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td></tr>
+          <tr><td>3.1</td><td>≥ 4 instancias aisladas por HW</td><td>“Up to 4 MIGs @ 24GB”</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td></tr>
+          <tr><td>3.1</td><td>vGPU certificada en el hipervisor</td><td>NVIDIA vGPU: ESXi 8.0 U3g+ y VCF 9.0.1+. MIG-backed vGPU soportado</td><td><span class="tag ok">Cumple</span></td><td><a href="https://docs.nvidia.com/vgpu/20.0/product-support-matrix/vmware-vsphere.html" target="_blank" rel="noopener">NVIDIA vGPU</a> · <a href="https://docs.nvidia.com/ai-enterprise/release-8/latest/infra-software/vgpu/features/mig-backed-vgpu.html" target="_blank" rel="noopener">MIG-vGPU</a></td></tr>
+          <tr><td>3.1</td><td>FP8 / FP4 + FP16 / BF16</td><td>FP4 4 PF · FP8 2 PF · FP16/BF16 1 PF</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td></tr>
+          <tr><td>3.1</td><td>PCIe Gen5</td><td>PCIe 5.0 x16</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td></tr>
+          <tr><td>3.1</td><td>≤ 600 W por GPU</td><td>600 W, o limitada a 450 W</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td></tr>
+          <tr><td>3.1</td><td>Enfriamiento por aire</td><td>GPU pasiva · servidor con 6 ventiladores N+1</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2128-thinksystem-sr650a-v4-server" target="_blank" rel="noopener">LP2128</a></td></tr>
+          <tr><td>3.1</td><td>Server Edition pasiva certificada</td><td>Opción ThinkSystem 4X67B09287</td><td><span class="tag ok">Cumple</span></td><td><a href="https://serverproven.lenovo.com/option/4X67B09287/" target="_blank" rel="noopener">ServerProven</a></td></tr>
+          <tr><td>3.2</td><td>Aloja 2 o 4 GPUs doble ancho</td><td>SR650a V4: 2 a 600 W o 4 a 450 W</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td></tr>
+          <tr><td>3.2</td><td>Doble socket · ≥ 48 vCPU</td><td>2 × Xeon 6530P 32C = 128 hilos</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2128-thinksystem-sr650a-v4-server" target="_blank" rel="noopener">LP2128</a></td></tr>
+          <tr><td>3.2</td><td>RAM ≥ 128 GB (rec. 256–512)</td><td>512 GB DDR5 6400</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2128-thinksystem-sr650a-v4-server" target="_blank" rel="noopener">LP2128</a></td></tr>
+          <tr><td>3.2</td><td>NVMe local ≥ 1 TB</td><td>2–4 × 3.84 TB U.2 NVMe</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2128-thinksystem-sr650a-v4-server" target="_blank" rel="noopener">LP2128</a></td></tr>
+          <tr><td>3.2</td><td>≥ 10 GbE FO · deseable 25 GbE</td><td>10/25GbE SFP28: hoy a 10, listo para 25</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2128-thinksystem-sr650a-v4-server" target="_blank" rel="noopener">LP2128</a></td></tr>
+          <tr><td>3.2</td><td>Fuentes redundantes N+1</td><td>2 × 3200 W hot-swap redundantes</td><td><span class="tag warn">Validar</span></td><td>Requiere 230 V en el rack</td></tr>
+          <tr><td>3.2</td><td>Garantía ≥ 3 años, ideal 5 · repuestos Ecuador</td><td>3 años base (7DGD) + extensión 1–2 años; 4 h opcional</td><td><span class="tag warn">Validar</span></td><td>Cobertura en Cuenca</td></tr>
+          <tr><td>3.3</td><td>Sin storage nuevo · NVMe como caché</td><td>NVMe local por servidor</td><td><span class="tag ok">Cumple</span></td><td>Diseño</td></tr>
+          <tr><td>5</td><td>NVIDIA AI Enterprise por GPU y plazo</td><td>Vía Lenovo, precio educación: 3 años 7S02001KWW · 5 años 7S02001LWW</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2289-nvidia-software-product-guide" target="_blank" rel="noopener">LP2289</a></td></tr>
+          <tr><td>5</td><td>vSphere Foundation / Enterprise Plus</td><td>VVF o VCF por núcleo: 64 núcleos por servidor</td><td><span class="tag ok">Cumple</span></td><td><a href="https://docs.nvidia.com/vgpu/20.0/product-support-matrix/vmware-vsphere.html" target="_blank" rel="noopener">NVIDIA vGPU</a></td></tr>
+          <tr><td>5</td><td>KAI Scheduler</td><td>Open source, sin costo</td><td><span class="tag ok">Cumple</span></td><td>Documento §5</td></tr>
+          <tr><td>5</td><td>Run:ai (opcional)</td><td>Lenovo indica que NVIDIA Enterprise incluye Run:ai self-hosted; si no, EDU 3a 7S02004YWW · 5a 7S020051WW</td><td><span class="tag warn">Validar</span></td><td><a href="https://lenovopress.lenovo.com/lp2289-nvidia-software-product-guide" target="_blank" rel="noopener">LP2289</a></td></tr>
+          <tr><td>5</td><td>Sistema operativo</td><td>Ubuntu 22.04/24.04 y RHEL 9.7/10.1 soportados con esta GPU en SR650a V4</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td></tr>
+          <tr><td>5</td><td>Veeam</td><td>Backup &amp; Replication para VMs; Kasten si hay Kubernetes</td><td><span class="tag ok">Cumple</span></td><td>Partner Core</td></tr>
+          <tr><td>5</td><td>Monitoreo</td><td>DCGM + Prometheus + Grafana + XClarity Controller 3</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2128-thinksystem-sr650a-v4-server" target="_blank" rel="noopener">LP2128</a></td></tr>
+          <tr><td>6</td><td>Soporte en Ecuador, español, 24/7</td><td>Lenovo en sitio + mesa Core en primer nivel</td><td><span class="tag warn">Validar</span></td><td>Alcance 24/7 en Cuenca</td></tr>
+          <tr><td>6</td><td>Transferencia de conocimiento</td><td>Plan Core: drivers, MIG, orquestación, monitoreo, respaldos</td><td><span class="tag ok">Cumple</span></td><td>Core</td></tr>
+          <tr><td>6</td><td>PoC en la versión exacta</td><td>Equipo demo o laboratorio Lenovo con SR650a V4 + RTX PRO 6000</td><td><span class="tag warn">Validar</span></td><td>Lenovo Ecuador</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="sec">
+    <header><span class="lbl">4.5</span><h2>Cómo se reparten las GPUs</h2><p>Las dos vías del documento, con lo que soporta el fabricante.</p></header>
+    <div class="two">
+      <div><span class="tag core">VMware vGPU</span><ul>
+        <li>ESXi 8.0 U3g+ o VCF 9.0.1+ <small class="d">(NVIDIA)</small></li>
+        <li>Edición: vSphere Foundation o Enterprise Plus</li>
+        <li>NVIDIA AI Enterprise EDU por GPU (4 licencias)</li>
+        <li>MIG-backed vGPU: hasta 4 particiones por GPU</li>
+        <li>Turnos dentro de cada partición en VCF: NVIDIA lo anuncia “pronto” → validar en PoC</li>
+      </ul></div>
+      <div><span class="tag core">Kubernetes</span><ul>
+        <li>Opción Core: <dfn data-k="vks">VKS</dfn> dentro de VCF, sin dejar VMware</li>
+        <li>Opción sin VMware: Ubuntu 24.04 en el servidor + NVIDIA GPU Operator</li>
+        <li>Reparto: KAI (gratis) o Run:ai</li>
+        <li>MIG en contenedores sin licencia vGPU</li>
+        <li>Respaldo: Veeam Kasten</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <header><span class="lbl">4.6</span><h2>Por validar con Lenovo</h2><p>No bloquean, pero hay que confirmarlas antes de cotizar.</p></header>
+    <div class="tw">
+      <table class="t-min">
+        <thead><tr><th>#</th><th>Qué validar</th><th>Por qué</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Disponibilidad de la GPU en Ecuador</td><td>Lenovo la marca como “Controlled”: no se ofrece en ciertos mercados por decisión del gobierno de EE. UU.</td></tr>
+          <tr><td>2</td><td>230 V en el rack del cliente</td><td>Las fuentes de 3200 W trabajan a 230 V</td></tr>
+          <tr><td>3</td><td>Pasar de 2 a 4 GPUs en el servidor de academia</td><td>Solo la versión de 450 W (CHWT) permite 4; confirmar que se puede ampliar después</td></tr>
+          <tr><td>4</td><td>ESXi + esta GPU en SR650a V4 con soporte Lenovo</td><td>El servidor está certificado para ESXi 9.0 y NVIDIA soporta la GPU en ESXi; confirmar la combinación</td></tr>
+          <tr><td>5</td><td>Garantía 5 años y 24/7 con 4 h en Cuenca</td><td>El documento pide repuestos en Ecuador y opción 24/7 para producción</td></tr>
+          <tr><td>6</td><td>Run:ai incluido en NVIDIA Enterprise</td><td>Si viene incluido, no se cotiza aparte</td></tr>
+          <tr><td>7</td><td>Equipo para la PoC</td><td>El documento exige demostrar sobre la versión exacta ofertada</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
   <div class="snav"><a class="btn" href="#e3">← Etapa 03</a><a class="btn" href="#e5">Etapa 05 →</a></div>
   </div>
 </div>
@@ -1932,7 +2077,8 @@ const G_ = {
     "25g":["25 GbE","Tarjeta de red de 25 gigabits. Hoy se conecta a 10 GbE; cuando la U mejore su red, ya está lista sin cambiar hardware."],
     psu:["Fuentes redundantes","Dos o más fuentes de poder. Si una falla, el servidor sigue encendido con la otra."],
     u:["U (unidad de rack)","Altura de un equipo en el rack. 1U ≈ 4.4 cm. Un rack típico tiene 42U."],
-    sr650a:["Lenovo SR650a V4","Servidor Lenovo de 2U para GPUs. Soporta hasta 4 de estas GPUs, pero limitadas a 450 W cada una."],
+    sr650a:["Lenovo SR650a V4","Servidor Lenovo de 2U para GPUs. Acepta 2 de estas GPUs a 600 W, o 4 si se piden en la versión limitada a 450 W."],
+    sr650i:["Lenovo SR650i V4","Versión del SR650a V4 armada de fábrica para inferencia: 2 × Xeon 6530P, 512 GB, 2 × RTX PRO 6000, NVMe y red 10/25GbE. No se puede modificar."],
     dl380a:["HPE DL380a Gen12","Servidor HPE de 4U para GPUs, hasta 8 de estas GPUs a 600 W. Alternativa a Lenovo."],
     cap:["Límite a 450 W","El fabricante baja el consumo máximo de cada GPU para que 4 quepan en 2U sin sobrecalentarse. Rinde algo menos que a 600 W."],
     nucleos:["Licencia por núcleo","VMware (Broadcom) cobra por cada núcleo de CPU del servidor. Más servidores o más núcleos = más licencia."],

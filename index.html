@@ -825,6 +825,8 @@ details.more>summary:focus-visible{outline:2px solid var(--accent);outline-offse
 @media (max-width:980px){.nr-g{grid-template-columns:1fr}}
 .resp td.ours,.resp th.ours{background:#eef0ff}
 .resp th.ours{color:var(--navy)}
+.resp td.ours2,.resp th.ours2{background:#f6f7f9}
+.orq{table-layout:fixed}.orq td,.orq th{white-space:normal!important}.resp th .tag{display:inline-block;margin-top:4px}
 .resp td{vertical-align:top}
 .lic{table-layout:fixed}.lic td,.lic th{white-space:normal!important;overflow-wrap:anywhere}.lic td small{display:block;color:var(--ink-3);font-size:12px}
 </style>
@@ -1451,20 +1453,21 @@ details.more>summary:focus-visible{outline:2px solid var(--accent);outline-offse
       </table>
     </div>
   </section>
-<section class="sec">
-    <header><span class="lbl">3.4</span><h2>Orquestación · respuesta al §4.2</h2><p>Su tabla de dos paradigmas, con lo que proponemos en la última columna.</p></header>
+<section class="sec" style="grid-template-columns:minmax(0,1fr)">
+    <header><span class="lbl">3.4</span><h2>Orquestación · respuesta al §4.2</h2><p>Su tabla de dos paradigmas, con nuestras dos propuestas al final: con VMware y sin VMware.</p></header>
     <div class="col">
       <div class="tw">
-        <table class="spec resp" style="min-width:820px">
-          <thead><tr><th>Criterio</th><th>Paradigma 1 · VMware vGPU</th><th>Paradigma 2 · Kubernetes</th><th class="ours">Proponemos · Kubernetes dentro de VMware (<dfn data-k="vks">VKS</dfn>)</th></tr></thead>
-          <tbody><tr><td><b>Unidad de carga</b></td><td>Máquina virtual con vGPU</td><td>Contenedor / pod</td><td class="ours">Contenedores en Kubernetes dentro de VMware. Las VMs de trabajo de VKS reciben la GPU por vGPU</td></tr><tr><td><b>Repatriación desde GCP</b></td><td>Re-empaquetar servicios a VMs</td><td>Casi directo</td><td class="ours">Casi directo: los mismos contenedores Docker / vLLM que hoy corren en GCP</td></tr><tr><td><b>Producción 24/7</b></td><td>Funciona</td><td>Terreno natural</td><td class="ours">Kubernetes reinicia los servicios caídos; VMware y Veeam protegen las VMs</td></tr><tr><td><b>Academia</b></td><td>VMs con vGPU</td><td>JupyterHub + scheduler de GPU</td><td class="ours">JupyterHub + KAI sobre VKS: cada estudiante recibe una partición de 24 GB o espera en cola</td></tr><tr><td><b>Reparto inteligente de GPU</b></td><td>Time-slicing vGPU + partición HW</td><td>KAI o Run:ai</td><td class="ours">Particiones MIG de 24 GB entregadas por vGPU + KAI para colas y fair-share. Run:ai opcional</td></tr><tr><td><b>Curva para el equipo</b></td><td>Más baja</td><td>Más alta</td><td class="ours">Media: DTIC sigue administrando VMware; Kubernetes solo para publicar servicios. Core capacita y acompaña</td></tr><tr><td><b>Costo de licencia</b></td><td>NVIDIA AI Enterprise por GPU + vSphere compatible</td><td>KAI gratis; Run:ai opcional</td><td class="ours">NVIDIA AI Enterprise por GPU + VMware con VKS. KAI gratis. Es la opción con más licencias</td></tr></tbody>
+        <table class="spec resp orq" style="min-width:980px">
+          <colgroup><col style="width:14%"><col style="width:16%"><col style="width:16%"><col style="width:27%"><col style="width:27%"></colgroup>
+          <thead><tr><th>Criterio</th><th>Paradigma 1 · VMware vGPU</th><th>Paradigma 2 · Kubernetes</th><th class="ours">Propuesta A · Kubernetes dentro de VMware (<dfn data-k="vks">VKS</dfn>) <span class="tag core">Recomendada</span></th><th class="ours2">Propuesta B · Kubernetes sin VMware <span class="tag mut">Alternativa</span></th></tr></thead>
+          <tbody><tr><td><b>Unidad de carga</b></td><td>Máquina virtual con vGPU</td><td>Contenedor / pod</td><td class="ours">Contenedores en Kubernetes dentro de VMware. Las VMs de trabajo de VKS reciben la GPU por vGPU</td><td class="ours2">Contenedores en Kubernetes instalado directo sobre Ubuntu 24.04, sin hipervisor</td></tr><tr><td><b>Repatriación desde GCP</b></td><td>Re-empaquetar servicios a VMs</td><td>Casi directo</td><td class="ours">Casi directo: los mismos contenedores Docker / vLLM que hoy corren en GCP</td><td class="ours2">Casi directo: los mismos contenedores de GCP</td></tr><tr><td><b>Producción 24/7</b></td><td>Funciona</td><td>Terreno natural</td><td class="ours">Kubernetes reinicia los servicios caídos; VMware y Veeam protegen las VMs</td><td class="ours2">Kubernetes reinicia los servicios caídos; respaldo con Veeam Kasten</td></tr><tr><td><b>Academia</b></td><td>VMs con vGPU</td><td>JupyterHub + scheduler de GPU</td><td class="ours">JupyterHub + KAI sobre VKS: cada estudiante recibe una partición de 24 GB o espera en cola</td><td class="ours2">JupyterHub + KAI: misma experiencia para el estudiante</td></tr><tr><td><b>Reparto inteligente de GPU</b></td><td>Time-slicing vGPU + partición HW</td><td>KAI o Run:ai</td><td class="ours">Particiones MIG de 24 GB entregadas por vGPU + KAI para colas y fair-share. Run:ai opcional</td><td class="ours2">Particiones MIG de 24 GB con NVIDIA GPU Operator (gratis) + KAI. Sin vGPU. Run:ai opcional</td></tr><tr><td><b>Curva para el equipo</b></td><td>Más baja</td><td>Más alta</td><td class="ours">Media: DTIC sigue administrando VMware; Kubernetes solo para publicar servicios. Core capacita y acompaña</td><td class="ours2">Alta: DTIC administra Linux y Kubernetes. Core implementa, capacita y puede dar soporte gestionado</td></tr><tr><td><b>Costo de licencia</b></td><td>NVIDIA AI Enterprise por GPU + vSphere compatible</td><td>KAI gratis; Run:ai opcional</td><td class="ours">NVIDIA AI Enterprise por GPU + VMware con VKS. KAI gratis. Es la opción con más licencias</td><td class="ours2">Sin VMware ni NVIDIA AI Enterprise obligatorios. Solo Kasten por nodo. OpenShift (IBM) si quieren soporte empresarial de Kubernetes, con costo</td></tr></tbody>
         </table>
       </div>
-      <p class="plain"><b>Por qué:</b> toma lo mejor de los dos. Los servicios llegan de GCP casi sin cambios (Paradigma 2) y DTIC no deja la plataforma que ya conoce (Paradigma 1). <b>Plan B:</b> si su licencia VMware no incluye VKS, Paradigma 1 puro. Si prefieren no pagar NVIDIA ni VMware, Paradigma 2 sobre Ubuntu: más barato, pero DTIC aprende Kubernetes desde cero.</p>
+      <p class="plain"><b>A · recomendada:</b> toma lo mejor de los dos paradigmas. Los servicios llegan de GCP casi sin cambios y DTIC no deja el VMware que ya conoce. <b>B · sin VMware:</b> mismo resultado para funcionarios y estudiantes, y bastante más barata en licencias, pero toda la operación pasa a Linux y Kubernetes, que DTIC no conoce. Si su licencia VMware no incluye VKS y no quieren B, queda el Paradigma 1 puro.</p>
     </div>
   </section>
 <section class="sec">
-    <header><span class="lbl">3.5</span><h2>Licencias · respuesta al §5</h2><p>Cada licencia de su tabla: si la incluimos, cómo se cotiza y cuántas.</p></header>
+    <header><span class="lbl">3.5</span><h2>Licencias · respuesta al §5</h2><p>Cada licencia de su tabla: si la incluimos, cómo se cotiza y cuántas (con la Propuesta A).</p></header>
     <div class="col">
       <div class="tw">
         <table class="spec resp lic" style="min-width:820px">
@@ -1482,7 +1485,7 @@ details.more>summary:focus-visible{outline:2px solid var(--accent);outline-offse
           <div class="edu"><span class="d">5 años · <dfn data-k="edu">educación</dfn></span><b class="d">$18 000</b></div>
         </div>
       </div>
-      <p class="plain"><b>En simple:</b> lo que se paga es NVIDIA AI Enterprise por GPU y los núcleos de VMware si su licencia actual no alcanza. Lo demás no tiene costo o queda fuera del alcance. Todo se cotiza a 3 y 5 años, con soporte.</p>
+      <p class="plain"><b>En simple:</b> con la Propuesta A se paga NVIDIA AI Enterprise por GPU y los núcleos de VMware si su licencia actual no alcanza. Con la Propuesta B (sin VMware) ninguna de las dos es obligatoria. Lo demás no tiene costo o queda fuera del alcance. Todo se cotiza a 3 y 5 años, con soporte.</p>
     </div>
   </section>
 <section class="sec">

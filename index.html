@@ -850,13 +850,10 @@ details.more>summary:focus-visible{outline:2px solid var(--accent);outline-offse
 <nav class="tabs" aria-label="Etapas">
   <div class="in" role="tablist">
     <a class="tab pend" href="#r0" role="tab" id="t0" aria-controls="r0"><span class="d">★</span>Resumen<span class="st">Empieza aquí</span></a>
-    <a class="tab done" href="#e1" role="tab" id="t1" aria-controls="e1"><span class="d">01</span>Entender<span class="st">Hecho</span></a>
-    <a class="tab todo" href="#e2" role="tab" id="t2" aria-controls="e2"><span class="d">02</span>Aclarar<span class="st">Pendiente</span></a>
-    <a class="tab done" href="#e3" role="tab" id="t3" aria-controls="e3"><span class="d">03</span>Dimensionar<span class="st">Preliminar</span></a>
-    <a class="tab pend" href="#e4" role="tab" id="t4" aria-controls="e4"><span class="d">04</span>Solución<span class="st">En curso</span></a>
-    <a class="tab pend" href="#e4p" role="tab" id="t4p" aria-controls="e4p"><span class="d">04p</span>Cómo funcionaría<span class="st">Propuesta</span></a>
-    <a class="tab pend" href="#e4b" role="tab" id="t4b" aria-controls="e4b"><span class="d">04b</span>Opciones GPU<span class="st">En curso</span></a>
-    <a class="tab todo" href="#e5" role="tab" id="t5" aria-controls="e5"><span class="d">05</span>Próximos pasos<span class="st">Pendiente</span></a>
+    <a class="tab todo" href="#e1" role="tab" id="t1" aria-controls="e1"><span class="d">01</span>El pedido<span class="st">Preguntas pendientes</span></a>
+    <a class="tab pend" href="#e4" role="tab" id="t4" aria-controls="e4"><span class="d">02</span>La solución<span class="st">En curso</span></a>
+    <a class="tab pend" href="#e4p" role="tab" id="t4p" aria-controls="e4p"><span class="d">03</span>Cómo funcionaría<span class="st">Propuesta</span></a>
+    <a class="tab todo" href="#e5" role="tab" id="t5" aria-controls="e5"><span class="d">04</span>Cumplimiento y pasos<span class="st">Validar con Lenovo</span></a>
     <a class="tab gl" href="#g" role="tab" id="tg" aria-controls="g"><span class="d">A–Z</span>Glosario<span class="st">&nbsp;</span></a>
     <a class="tab utab" href="#u"><span class="d">LAB</span>Entender<span class="st">el proyecto</span></a>
   </div>
@@ -865,8 +862,7 @@ details.more>summary:focus-visible{outline:2px solid var(--accent);outline-offse
 <div class="stage" id="r0" role="tabpanel" aria-labelledby="t0">
   <div class="shead"><div class="in"><span class="num">RESUMEN</span><div><h2>Todo en una pantalla</h2><p>Lo esencial del proyecto. Cada bloque lleva a su detalle.</p></div><span class="status pend">En curso</span></div></div>
   <div class="in">
-
-  <section class="sec">
+<section class="sec">
     <header><span class="lbl">R.1</span><h2>Veredicto</h2><p>Revisado contra Lenovo Press y NVIDIA, con verificación independiente.</p></header>
     <div class="col">
       <div class="res">
@@ -878,8 +874,7 @@ details.more>summary:focus-visible{outline:2px solid var(--accent);outline-offse
       <p class="plain"><b>En simple:</b> sí podemos cumplirlo con Lenovo, con 4 GPUs NVIDIA RTX PRO 6000 en 2 servidores separados. Si la U acepta ajustar dos requisitos, también entra la H200 NVL en producción.</p>
     </div>
   </section>
-
-  <section class="sec">
+<section class="sec">
     <header><span class="lbl">R.2</span><h2>Piden · proponemos · falta</h2><p>Tres columnas para contarlo en un minuto.</p></header>
     <div class="three">
       <div><span class="tag info">Lo que piden</span><ul>
@@ -888,7 +883,7 @@ details.more>summary:focus-visible{outline:2px solid var(--accent);outline-offse
         <li>Producción y academia <b>nunca en la misma GPU física</b></li>
         <li>Hardware, licencias por plazo, soporte en Ecuador y capacitación</li>
         <li>Es un levantamiento para SERCOP, no una compra</li>
-      </ul><a class="rlink" href="#e1">Ver el pedido →</a></div>
+      </ul><a class="rlink" href="#e1">Ver el pedido y las preguntas →</a></div>
       <div><span class="tag core">Lo que proponemos</span><ul>
         <li><b>Siempre 2 servidores separados</b>: uno para producción y otro para academia. Descartamos el servidor único</li>
         <li><b>Config 1:</b> 2 × Lenovo SR650i V4 con RTX PRO 6000 (base)</li>
@@ -896,37 +891,21 @@ details.more>summary:focus-visible{outline:2px solid var(--accent);outline-offse
         <li><b>Config 3:</b> H200 en producción, si FP4 pasa a deseable</li>
         <li><b>Config 4:</b> 1 GPU por servidor, solo para comparar: no la recomendamos</li>
         <li>VMware que ya tienen + Kubernetes adentro + JupyterHub para estudiantes</li>
-      </ul><a class="rlink" href="#e4">Ver la solución →</a><a class="rlink" href="#e4p">Ver cómo funcionaría →</a><a class="rlink" href="#e4b">Ver opciones de GPU →</a></div>
+      </ul><a class="rlink" href="#e4">Ver la solución →</a><a class="rlink" href="#e4p">Ver cómo funcionaría →</a></div>
       <div><span class="tag warn">Lo que falta</span><ul>
         <li>Reunión técnica: 10 preguntas abiertas</li>
         <li>Técnico Core: armar las 4 configuraciones en el configurador de Lenovo</li>
         <li>Lenovo: validar 7 puntos y dar precios</li>
         <li>Confirmar que Core vende licencias NVIDIA vía Lenovo</li>
         <li>Definir quién implementa Kubernetes si se elige</li>
-      </ul><a class="rlink" href="#e5">Ver próximos pasos →</a></div>
+      </ul><a class="rlink" href="#e5">Ver cumplimiento y pasos →</a></div>
     </div>
   </section>
-
-  <section class="sec">
-    <header><span class="lbl">R.3</span><h2>Hallazgos clave</h2><p>Los 4 que más cambian la propuesta. <a class="rlink" href="#e1" style="display:inline">Todos →</a></p></header>
-    <div class="tw">
-      <table class="t-min">
-        <tbody>
-          <tr><td><span class="tag crit">Crítico</span></td><td><b>Ninguna GPU cumple todo el §3.1.</b> FP4 obligatorio + ≥ 1.7 TB/s dejan el proceso sin oferentes</td><td>Recomendar FP4 deseable y ≥ 1.5 TB/s</td></tr>
-          <tr><td><span class="tag crit">Crítico</span></td><td>El documento dice 16 estudiantes y también 12</td><td>Cambia la cantidad de GPUs de academia</td></tr>
-          <tr><td><span class="tag crit">Crítico</span></td><td>Producción necesita 94–108 GB: 1 GPU de 96 GB no alcanza</td><td>2 GPUs para producción</td></tr>
-          <tr><td><span class="tag warn">Alto</span></td><td>La L40S que sugieren no cumple su propio §3.1</td><td>No ofertarla</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <div class="snav"><span></span><a class="btn pri" href="#e1">Empezar por la Etapa 01 →</a></div>
+  <div class="snav"><span></span><a class="btn pri" href="#e1">01 · El pedido →</a></div>
   </div>
 </div>
-
 <div class="stage" id="e1" role="tabpanel" hidden>
-  <div class="shead"><div class="in"><span class="num">ETAPA 01</span><div><h2>Entender el pedido</h2><p>Qué nos piden, el documento resumido y qué está mal en él.</p></div><span class="status done">Hecho</span></div></div>
+  <div class="shead"><div class="in"><span class="num">01</span><div><h2>El pedido</h2><p>Qué nos piden, el documento resumido, qué está mal en él y qué hay que preguntar.</p></div><span class="status todo">Preguntas pendientes</span></div></div>
   <div class="in">
 <section class="sec">
     <header><span class="lbl">1.1</span><h2>El pedido</h2><p>Un solo proyecto, dos mundos que no se pueden mezclar.</p></header>
@@ -1134,23 +1113,9 @@ details.more>summary:focus-visible{outline:2px solid var(--accent);outline-offse
       </table>
     </div>
   </section>
-  <div class="snav"><a class="btn" href="#r0">← Resumen</a><a class="btn pri" href="#e2">Etapa 02 · Aclarar →</a></div>
-  </div>
-</div>
-<div class="stage" id="e2" role="tabpanel" hidden>
-  <div class="shead"><div class="in"><span class="num">ETAPA 02</span><div><h2>Aclarar con el cliente</h2><p>Lo que falta saber. Mientras no respondan, avanzamos con un supuesto por pregunta.</p></div><span class="status todo">Pendiente</span></div></div>
-  <div class="in">
 <section class="sec">
-    <header><span class="lbl">2.1</span><h2>Estado</h2><p>La reunión técnica no se ha hecho.</p></header>
-    <div class="cells c3">
-      <div><span class="d">Reunión técnica</span><b>Por agendar</b><span class="sub">Ellos la ofrecieron en el correo</span></div>
-      <div><span class="d">Preguntas críticas</span><b class="d">0 / 10</b><span class="sub">respondidas</span></div>
-      <div class="imp"><span class="d">Mientras tanto</span><b>Supuestos declarados</b><span class="sub">Así avanzó la Etapa 3</span></div>
-    </div>
-  </section>
-<section class="sec">
-    <header><span class="lbl">2.2</span><h2>Preguntas y supuestos</h2><p>Si la respuesta difiere del supuesto, la Etapa 3 se recalcula.</p></header>
-    <div class="tw">
+    <header><span class="lbl">1.4</span><h2>Preguntas y supuestos</h2><p>Para la reunión técnica. Mientras no respondan, trabajamos con el supuesto.</p></header>
+    <div class="col"><div class="tw">
       <table class="qt">
         <thead><tr><th>#</th><th>Pregunta</th><th>Supuesto usado</th><th>Si cambia</th></tr></thead>
         <tbody>
@@ -1167,10 +1132,7 @@ details.more>summary:focus-visible{outline:2px solid var(--accent);outline-offse
         </tbody>
       </table>
     </div>
-  </section>
-<section class="sec">
-    <header><span class="lbl">2.3</span><h2>Preguntas secundarias</h2><p>Afinan, no cambian el tamaño.</p></header>
-    <div>
+    <details class="more"><summary>Preguntas secundarias y decisiones de diseño</summary><div class="more-b"><div>
       <details class="more">
         <summary>Ver 9 preguntas secundarias</summary>
         <div class="tw" style="margin-top:10px">
@@ -1190,140 +1152,26 @@ details.more>summary:focus-visible{outline:2px solid var(--accent);outline-offse
         </div>
       </details>
     </div>
+<div class="tw">
+      <table class="t-min">
+        <tbody>
+          <tr><td><span class="tag warn">Licencia</span></td><td>¿Tienen VCF o VVF? VKS viene con VCF; con VVF hay que validarlo</td><td>Si no hay VKS: vGPU con máquinas virtuales, o Ubuntu con Kubernetes</td></tr>
+          <tr><td><span class="tag warn">Academia</span></td><td>¿16 o 12 estudiantes con GPU propia?</td><td>Define Config 1 o Config 2</td></tr>
+          <tr><td><span class="tag warn">Acceso</span></td><td>¿Con qué cuenta entran los estudiantes: LDAP, Microsoft o Google?</td><td>JupyterHub se conecta a cualquiera</td></tr>
+          <tr><td><span class="tag warn">Perfiles</span></td><td>¿Todas las materias usan el mismo perfil de 24 GB?</td><td>Se pueden crear perfiles por materia</td></tr>
+          <tr><td><span class="tag warn">Operación</span></td><td>¿DTIC opera todo o contrata monitoreo gestionado con Core?</td><td>Cambia el alcance del soporte</td></tr>
+        </tbody>
+      </table>
+    </div></div></details></div>
   </section>
-<section class="sec">
-    <header><span class="lbl">2.4</span><h2>Correo para pedir la reunión</h2><p>Listo para copiar.</p></header>
-    <details class="more"><summary>Ver el correo</summary><div class="more-b"><div class="mail">
-      <div class="mh"><span class="d" style="font-size:13px">Asunto: Infraestructura GPU on-premise · solicitud de reunión técnica</span><button type="button" class="copy" id="copyMail">Copiar</button></div>
-<pre id="mailTxt">Estimados, buenas tardes.
-
-Gracias por compartir el documento de infraestructura GPU on-premise. Para entregar una propuesta dimensionada con precisión, les proponemos una reunión técnica de 45 minutos para confirmar:
-
-1. Estudiantes concurrentes (el documento menciona 16 y 12).
-2. Número total de GPUs esperado (la Opción A indica 2 y el diagrama 4).
-3. Plazo del servicio: 3 o 5 años.
-4. Si requieren presupuesto referencial.
-5. Cómo operan hoy los servicios en GCP y cuántos usuarios concurrentes tienen.
-6. Versión y licenciamiento vigente de VMware.
-7. Carga actual del rack de 8 kW.
-8. La sección 7 del documento, que no se incluyó en el envío.
-9. Si el soporte FP4 es obligatorio o deseable, y si aceptan un ancho de banda de memoria ≥ 1.5 TB/s.
-10. Si el rack dispone de tomas de 200–240 V.
-
-Quedamos atentos a su disponibilidad.
-
-Saludos cordiales,
-Juan Carlos Jaramillo
-Coresolutions</pre>
-    </div>
-  </div></details></section>
-  <div class="snav"><a class="btn" href="#e1">← Etapa 01</a><a class="btn pri" href="#e3">Etapa 03 · Dimensionar →</a></div>
-  </div>
-</div>
-<div class="stage" id="e3" role="tabpanel" hidden>
-  <div class="shead"><div class="in"><span class="num">ETAPA 03</span><div><h2>Dimensionar</h2><p>Cuántas GPUs, cómo se reparten, cuánta energía. Con los supuestos de la Etapa 02.</p></div><span class="status done">Preliminar</span></div></div>
-  <div class="in">
-<section class="sec">
-    <header><span class="lbl">3.1</span><h2>Resultado</h2><p>4 GPUs en 2 servidores separados.</p></header>
-    <div class="col">
-      <div class="res">
-        <div><span class="v">4</span><span class="lbl">GPUs en total</span></div>
-        <div><span class="v">384 GB</span><span class="lbl"><dfn data-k="vram">VRAM</dfn> total</span></div>
-        <div><span class="v">~4.0–4.2 kW</span><span class="lbl">2 servidores separados</span></div>
-        <div><span class="v">4U</span><span class="lbl">Espacio en rack</span></div>
-      </div>
-      <p class="plain"><b>Supuestos (Etapa 02):</b> 16 estudiantes · 2 GPUs para producción · plazo 3 y 5 años · rack de 8 kW enfriado por aire.</p>
-      <p class="plain"><b>En simple:</b> con 4 tarjetas alcanza. 2 van a producción y 2 a los estudiantes. Van en dos servidores separados: uno para producción y otro para academia.</p>
-    </div>
-  </section>
-<section class="sec">
-    <header><span class="lbl">3.2</span><h2>Producción no cabe en 1 GPU</h2><p>Primer cálculo con los datos del documento.</p></header>
-    <div class="col">
-      <p class="plain"><b>Cómo leerlo:</b> cada caja es una GPU de 96 GB. Cada columna es una <dfn data-k="particion">partición</dfn> de 24 GB. Lo pintado es lo que ocupa cada modelo.</p>
-      <div class="gpus">
-        <div class="gpu">
-          <div class="hd"><span>GPU 0 · 96 GB</span><span>~66 GB usados</span></div>
-          <div class="slots">
-            <div class="slot s2"><div class="fill" style="height:83%"></div><span class="n">Qwen 3.6 <dfn data-k="params">35B</dfn> Coding</span><span class="d">40 / 48 GB</span></div>
-            <div class="slot"><div class="fill" style="height:71%"></div><span class="n">Chatbot <dfn data-k="rag">RAG</dfn> + <dfn data-k="ocr">OCR</dfn></span><span class="d">17 / 24 GB</span></div>
-            <div class="slot"><div class="fill" style="height:38%"></div><span class="n">Ministral 8B <dfn data-k="endpoint">compartido</dfn></span><span class="d">9 / 24 GB</span></div>
-          </div>
-        </div>
-        <div class="gpu">
-          <div class="hd"><span>GPU 1 · 96 GB</span><span>14–28 GB usados</span></div>
-          <div class="slots">
-            <div class="slot s2"><div class="fill dev" style="height:58%"></div><span class="n"><dfn data-k="finetune">Fine-tuning</dfn> / dev 7B</span><span class="d">14–28 / 48 GB</span></div>
-            <div class="slot free"><span class="n"><dfn data-k="kv">KV cache</dfn> · crecimiento</span><span class="d">24 GB</span></div>
-            <div class="slot free"><span class="n"><dfn data-k="staging">Staging</dfn></span><span class="d">24 GB</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="legend">
-        <span><i class="sw" style="background:var(--b20)"></i>Producción</span>
-        <span><i class="sw" style="background:repeating-linear-gradient(135deg,var(--b10) 0 3px,var(--b20) 3px 6px)"></i>Desarrollo</span>
-        <span><i class="sw" style="border:1px solid var(--line-2)"></i>Libre</span>
-      </div>
-      <div class="verdict"><span class="big">2 GPUs</span><span>para producción. Truco: cargar Ministral <b>una sola vez</b> para los 3 servicios que lo usan (ahorra ~14 GB).</span></div>
-    </div>
-  </section>
-<section class="sec">
-    <header><span class="lbl">3.3</span><h2>Academia: asientos vs GPUs</h2><p>1 GPU de 96 GB = 4 pedazos de 24 GB = 4 estudiantes con GPU propia.</p></header>
-    <div class="col">
-      <p class="plain"><b>Cómo leerlo:</b> cada cuadro es un estudiante. Azul = tiene su pedazo de GPU. Amarillo = comparte y <dfn data-k="cola">espera turno</dfn>. Cambia los valores.</p>
-      <div class="ctrl">
-        <div class="seg"><span class="lbl">Estudiantes</span><div class="opts" id="stu"><button type="button" id="stu12" data-v="12" aria-pressed="false">12</button><button type="button" id="stu16" data-v="16" aria-pressed="true">16</button></div></div>
-        <div class="seg"><span class="lbl">GPUs academia</span><div class="opts" id="gpu"><button type="button" id="g1" data-v="1" aria-pressed="false">1</button><button type="button" id="g2" data-v="2" aria-pressed="true">2</button><button type="button" id="g4" data-v="4" aria-pressed="false">4</button></div></div>
-      </div>
-      <div class="seats" id="seats" aria-live="polite"></div>
-      <div class="legend">
-        <span><i class="sw" style="background:var(--navy)"></i><dfn data-k="particion">Partición dedicada</dfn></span>
-        <span><i class="sw" style="background:repeating-linear-gradient(135deg,#fff 0 3px,var(--warn) 3px 5px);border:1px solid var(--ink-2)"></i><dfn data-k="timeslice">Turnos / tiempo compartido</dfn></span>
-      </div>
-      <div class="verdict"><span class="big" id="seatBig">8 / 16</span><span id="seatVerdict"></span></div>
-    </div>
-  </section>
-<section class="sec">
-    <header><span class="lbl">3.4</span><h2>¿VMware o Kubernetes?</h2><p>Las dos formas de repartir las GPUs que plantea el documento.</p></header>
-    <div class="col">
-      <p class="plain"><b>Servidores:</b> siempre 2 separados. El servidor único (Opción B del documento) queda descartado; razones en la Etapa 04.</p>
-      <p class="plain">Con lo que ya usan (<dfn data-k="vmware">VMware</dfn>) o con la herramienta de la nube (<dfn data-k="k8s">Kubernetes</dfn>).</p>
-      <div class="tw">
-        <table>
-          <thead><tr><th></th><th>VMware <dfn data-k="vgpu">vGPU</dfn></th><th><dfn data-k="k8s">Kubernetes</dfn></th></tr></thead>
-          <tbody>
-            <tr><td>Qué recibe cada servicio</td><td><dfn data-k="vm">Máquina virtual</dfn></td><td><dfn data-k="contenedor">Contenedor</dfn></td></tr>
-            <tr><td>Migrar desde GCP</td><td>Hay que reempaquetar</td><td>Casi directo (ya usan <dfn data-k="docker">Docker / vLLM</dfn>)</td></tr>
-            <tr><td>Estudiantes</td><td>Una VM con GPU cada uno</td><td><dfn data-k="jupyter">JupyterHub</dfn> + <dfn data-k="kai">KAI</dfn> / <dfn data-k="runai">Run:ai</dfn></td></tr>
-            <tr><td>Licencia obligatoria</td><td class="d"><dfn data-k="nvaie">NVAIE</dfn> + <dfn data-k="vsphere">vSphere</dfn></td><td class="d">Ninguna</td></tr>
-            <tr><td>Equipo DTIC</td><td><span class="tag ok">Lo conoce</span></td><td><span class="tag warn">Nuevo</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="plain"><b>Tercera vía que no mencionan:</b> <dfn data-k="vks">Kubernetes dentro de VMware (VKS)</dfn>. Reciben los contenedores de GCP casi directo sin dejar la plataforma que ya conocen. Es lo que proponemos (ver Cómo funcionaría).</p>
-    </div>
-  </section>
-<section class="sec">
-    <header><span class="lbl">3.5</span><h2>Energía vs rack</h2><p>Estimación nuestra: GPUs + ~0.8 kW por servidor. Todo entra.</p></header>
-    <div class="enr">
-      <div class="er"><span class="n">Config 1 · 2 × SR650i V4</span><div class="bar"><i style="width:52.5%"></i></div><span class="d">4.2 kW</span></div>
-      <div class="er"><span class="n">Config 3 · H200 + SR650i V4</span><div class="bar"><i style="width:52.5%"></i></div><span class="d">4.2 kW</span></div>
-      <div class="er"><span class="n">Config 2 · SR650i + SR650a V4</span><div class="bar"><i style="width:50%"></i></div><span class="d">4.0 kW</span></div>
-      <div class="er"><span class="n">Config 2 · academia con 4 GPUs</span><div class="bar"><i style="width:58.75%"></i></div><span class="d">4.7 kW</span></div>
-      <div class="er"><span class="n">Config 4 · 1 GPU por servidor (no recomendada)</span><div class="bar"><i style="width:35%"></i></div><span class="d">2.8 kW</span></div>
-      <div class="er scale"><span class="n"></span><div class="ticks"><span>0</span><span>2</span><span>4</span><span>6</span><span>8 kW</span></div><span class="d"></span></div>
-      <p class="plain"><b>Ojo:</b> en la Config 2 las GPUs de academia van <dfn data-k="cap">limitadas a 450 W</dfn> para que quepan 4 en el mismo servidor: consumen menos y rinden algo menos.</p>
-    </div>
-  </section>
-
-  <div class="snav"><a class="btn" href="#e2">← Etapa 02</a><a class="btn pri" href="#e4">Etapa 04 · Solución →</a></div>
+  <div class="snav"><a class="btn" href="#r0">← Resumen</a><a class="btn pri" href="#e4">02 · La solución →</a></div>
   </div>
 </div>
 <div class="stage" id="e4" role="tabpanel" hidden>
-  <div class="shead"><div class="in"><span class="num">ETAPA 04</span><div><h2>Solución con Lenovo</h2><p>Cómo cumplimos cada requisito, con 2 servidores separados y marcas de Core.</p></div><span class="status pend">En curso</span></div></div>
+  <div class="shead"><div class="in"><span class="num">02</span><div><h2>La solución</h2><p>Las configuraciones con Lenovo, contra lo que piden, y por qué.</p></div><span class="status pend">En curso</span></div></div>
   <div class="in">
-
-  <section class="sec" id="cfgs">
-    <header><span class="lbl">4.1</span><h2>Configuraciones</h2><p>Siempre 2 servidores separados. Pasa el mouse o toca cada requisito para ver qué pide el documento y cómo lo cumple esa configuración.</p></header>
+<section class="sec" id="cfgs">
+    <header><span class="lbl">2.1</span><h2>Configuraciones</h2><p>Siempre 2 servidores separados. Pasa el mouse o toca cada requisito para ver qué pide el documento y cómo lo cumple esa configuración.</p></header>
     <div class="col">
       <div class="cfg3">
         <article class="cfgc rec">
@@ -1408,9 +1256,8 @@ Coresolutions</pre>
           </div></details>
     </div>
   </section>
-
-  <section class="sec" id="noB">
-    <header><span class="lbl">4.2</span><h2>Por qué no un solo servidor</h2><p>La Opción B del documento queda descartada.</p></header>
+<section class="sec" id="noB">
+    <header><span class="lbl">2.2</span><h2>Por qué no un solo servidor</h2><p>La Opción B del documento queda descartada.</p></header>
     <div class="col">
       <div class="nob">
         <div><b>Punto único de falla</b><span>Si falla la placa, una fuente o el backplane, caen producción y academia a la vez.</span></div>
@@ -1422,126 +1269,92 @@ Coresolutions</pre>
       </div>
     </div>
   </section>
-
-  
-
-
-
-
-
 <section class="sec">
-    <header><span class="lbl">4.3</span><h2>Licencias y reparto de GPU</h2><p>Qué exige cada fabricante según se use VMware o Kubernetes.</p></header>
+    <header><span class="lbl">2.3</span><h2>Producción no cabe en 1 GPU</h2><p>Primer cálculo con los datos del documento.</p></header>
     <div class="col">
-      <details class="more"><summary>Ver requisitos y licencias según VMware o Kubernetes</summary><div class="more-b"><div class="two">
-      <div><span class="tag core">VMware vGPU</span><ul>
-        <li>ESXi 8.0 U3g+ o VCF 9.0.1+ <small class="d">(NVIDIA)</small></li>
-        <li>Edición: vSphere Foundation o Enterprise Plus</li>
-        <li>NVIDIA AI Enterprise EDU por GPU (4 licencias)</li>
-        <li>MIG-backed vGPU: hasta 4 particiones por GPU</li>
-        <li>Turnos dentro de cada partición: disponibles en VCF 9.1 según las notas de vGPU 19.4 y 20 → probar en la PoC</li>
-      </ul></div>
-      <div><span class="tag core">Kubernetes</span><ul>
-        <li>Opción Core: <dfn data-k="vks">VKS</dfn> dentro de VCF, sin dejar VMware</li>
-        <li>Opción sin VMware: Ubuntu 24.04 en el servidor + NVIDIA GPU Operator</li>
-        <li>Reparto: KAI (gratis) o Run:ai</li>
-        <li>MIG en contenedores sin licencia vGPU</li>
-        <li>Respaldo: Veeam Kasten</li>
-      </ul></div>
-    </div>
-<div class="tw">
-        <table class="spec" style="min-width:600px">
-          <thead><tr><th>Licencia</th><th>VMware vGPU / VKS</th><th>Kubernetes sin VMware</th></tr></thead>
-          <tbody>
-            <tr><td><dfn data-k="nvaie">NVIDIA AI Enterprise</dfn></td><td class="d">4 GPUs · obligatoria</td><td class="d">No necesaria</td></tr>
-            <tr><td><dfn data-k="vsphere">vSphere</dfn> <dfn data-k="vcf">VVF / VCF</dfn></td><td class="d"><dfn data-k="nucleos">~112–128 núcleos (2 servidores)</dfn></td><td class="d">No aplica</td></tr>
-            <tr><td><dfn data-k="rhel">Sistema operativo</dfn></td><td class="d">Dentro de las VMs</td><td class="d">Ubuntu gratis · RHEL / <dfn data-k="openshift">OpenShift</dfn> por servidor</td></tr>
-            <tr><td>Reparto de GPU</td><td class="d">Incluido en vGPU</td><td class="d"><dfn data-k="kai">KAI</dfn> gratis · <dfn data-k="runai">Run:ai</dfn> opcional</td></tr>
-            <tr><td>Respaldo</td><td class="d"><dfn data-k="veeam">Veeam</dfn> (+ Kasten si VKS)</td><td class="d"><dfn data-k="kasten">Veeam Kasten</dfn> por nodo</td></tr>
-          </tbody>
-        </table>
-      </div></div></details>
-      <div>
-        <span class="lbl">NVIDIA AI Enterprise · 4 GPUs · <dfn data-k="lista">precio lista NVIDIA</dfn> USD</span>
-        <div class="money" style="margin-top:8px">
-          <div><span class="d">3 años · normal</span><b class="d">$54 000</b></div>
-          <div><span class="d">5 años · normal</span><b class="d">$72 000</b></div>
-          <div class="edu"><span class="d">3 años · <dfn data-k="edu">educación</dfn></span><b class="d">$13 500</b></div>
-          <div class="edu"><span class="d">5 años · <dfn data-k="edu">educación</dfn></span><b class="d">$18 000</b></div>
+      <p class="plain"><b>Cómo leerlo:</b> cada caja es una GPU de 96 GB. Cada columna es una <dfn data-k="particion">partición</dfn> de 24 GB. Lo pintado es lo que ocupa cada modelo.</p>
+      <div class="gpus">
+        <div class="gpu">
+          <div class="hd"><span>GPU 0 · 96 GB</span><span>~66 GB usados</span></div>
+          <div class="slots">
+            <div class="slot s2"><div class="fill" style="height:83%"></div><span class="n">Qwen 3.6 <dfn data-k="params">35B</dfn> Coding</span><span class="d">40 / 48 GB</span></div>
+            <div class="slot"><div class="fill" style="height:71%"></div><span class="n">Chatbot <dfn data-k="rag">RAG</dfn> + <dfn data-k="ocr">OCR</dfn></span><span class="d">17 / 24 GB</span></div>
+            <div class="slot"><div class="fill" style="height:38%"></div><span class="n">Ministral 8B <dfn data-k="endpoint">compartido</dfn></span><span class="d">9 / 24 GB</span></div>
+          </div>
+        </div>
+        <div class="gpu">
+          <div class="hd"><span>GPU 1 · 96 GB</span><span>14–28 GB usados</span></div>
+          <div class="slots">
+            <div class="slot s2"><div class="fill dev" style="height:58%"></div><span class="n"><dfn data-k="finetune">Fine-tuning</dfn> / dev 7B</span><span class="d">14–28 / 48 GB</span></div>
+            <div class="slot free"><span class="n"><dfn data-k="kv">KV cache</dfn> · crecimiento</span><span class="d">24 GB</span></div>
+            <div class="slot free"><span class="n"><dfn data-k="staging">Staging</dfn></span><span class="d">24 GB</span></div>
+          </div>
         </div>
       </div>
-      <p class="plain"><b>En simple:</b> con VMware se paga NVIDIA por cada GPU y los núcleos de VMware. Sin VMware se ahorran ambas, pero DTIC aprende Kubernetes desde cero. Si la U califica como educativa, NVIDIA baja 75%.</p>
+      <div class="legend">
+        <span><i class="sw" style="background:var(--b20)"></i>Producción</span>
+        <span><i class="sw" style="background:repeating-linear-gradient(135deg,var(--b10) 0 3px,var(--b20) 3px 6px)"></i>Desarrollo</span>
+        <span><i class="sw" style="border:1px solid var(--line-2)"></i>Libre</span>
+      </div>
+      <div class="verdict"><span class="big">2 GPUs</span><span>para producción. Truco: cargar Ministral <b>una sola vez</b> para los 3 servicios que lo usan (ahorra ~14 GB).</span></div>
     </div>
   </section>
-
 <section class="sec">
-    <header><span class="lbl">4.4</span><h2>Matriz de cumplimiento</h2><p>Los 32 requisitos uno por uno. Toca la fuente para abrirla.</p></header>
-    <details class="more"><summary>Ver los 32 requisitos uno por uno</summary><div class="more-b"><div class="tw">
-      <table class="t-min cm">
-        <thead><tr><th>§</th><th>Requisito</th><th>Cómo lo cumplimos</th><th>Estado</th><th>Fuente</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>Producción y academia no comparten GPU física</td><td>Dos servidores separados, uno por rol</td><td><span class="tag ok">Cumple</span></td><td>Diseño</td></tr>
-          <tr><td>1</td><td>VLAN dedicada</td><td>Puertos 10/25GbE en trunk con VLANs separadas</td><td><span class="tag ok">Cumple</span></td><td>Configuración</td></tr>
-          <tr><td>1</td><td>Rack ≤ 8 kW</td><td>~4.0–4.2 kW según configuración (estimado)</td><td><span class="tag ok">Cumple</span></td><td>Estimación Core</td></tr>
-          <tr><td>1</td><td>10 Gb por fibra al storage</td><td>Broadcom 57414 SFP28 (4XC7A08238) + ópticas 10G SR SFP+ (4TC7A78615)</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp0781-broadcom-57414-25gb-ethernet-adapters" target="_blank" rel="noopener">LP0781</a></td></tr>
-          <tr><td>1</td><td>Integrarse con VMware vSphere</td><td>SR650a V4 certificado para ESXi 9.0. La guía de la GPU no lista ESXi: el soporte de GPU en VMware viene de la matriz de NVIDIA</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/osig" target="_blank" rel="noopener">OSIG</a></td></tr>
-          <tr><td>3.1</td><td>≥ 96 GB VRAM con ECC</td><td>96 GB GDDR7 con ECC</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a> · <a href="https://www.nvidia.com/en-us/data-center/rtx-pro-6000-blackwell-server-edition/" target="_blank" rel="noopener">NVIDIA</a></td></tr>
-          <tr class="dev"><td>3.1</td><td>≥ 1.7 TB/s (referencial)</td><td>Hasta 1597 GB/s (~1.6 TB/s)</td><td><span class="tag crit">Desviación</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td></tr>
-          <tr><td>3.1</td><td>≥ 4 instancias aisladas por HW</td><td>“Up to 4 MIGs @ 24GB”</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td></tr>
-          <tr><td>3.1</td><td>vGPU certificada en el hipervisor</td><td>NVIDIA vGPU: ESXi 8.0 U3g+ y VCF 9.0.1+. vGPU sobre particiones MIG; turnos dentro de cada partición en VCF 9.1</td><td><span class="tag ok">Cumple</span></td><td><a href="https://docs.nvidia.com/vgpu/20.0/product-support-matrix/vmware-vsphere.html" target="_blank" rel="noopener">NVIDIA vGPU</a> · <a href="https://docs.nvidia.com/ai-enterprise/release-8/latest/infra-software/vgpu/features/mig-backed-vgpu.html" target="_blank" rel="noopener">MIG-vGPU</a></td></tr>
-          <tr><td>3.1</td><td>FP8 / FP4 + FP16 / BF16</td><td>FP4 4 PF · FP8 2 PF · FP16/BF16 1 PF</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td></tr>
-          <tr><td>3.1</td><td>PCIe Gen5</td><td>PCIe 5.0 x16</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td></tr>
-          <tr><td>3.1</td><td>≤ 600 W por GPU</td><td>600 W, o limitada a 450 W</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td></tr>
-          <tr><td>3.1</td><td>Enfriamiento por aire</td><td>GPU pasiva · servidor con 6 ventiladores N+1 (con 2 CPU)</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2128-thinksystem-sr650a-v4-server" target="_blank" rel="noopener">LP2128</a></td></tr>
-          <tr><td>3.1</td><td>Server Edition pasiva certificada</td><td>Opción ThinkSystem 4X67B09287</td><td><span class="tag ok">Cumple</span></td><td><a href="https://serverproven.lenovo.com/option/4X67B09287/" target="_blank" rel="noopener">ServerProven</a></td></tr>
-          <tr><td>3.2</td><td>Aloja 2 o 4 GPUs doble ancho</td><td>SR650a V4: 2 a 600 W (solo slots 21 y 23) o 4 a 450 W</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td></tr>
-          <tr><td>3.2</td><td>Doble socket · ≥ 48 vCPU</td><td>2 × Xeon 6530P 32C = 128 hilos</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2128-thinksystem-sr650a-v4-server" target="_blank" rel="noopener">LP2128</a></td></tr>
-          <tr><td>3.2</td><td>RAM ≥ 128 GB (rec. 256–512)</td><td>512 GB DDR5 6400</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2128-thinksystem-sr650a-v4-server" target="_blank" rel="noopener">LP2128</a></td></tr>
-          <tr><td>3.2</td><td>NVMe local ≥ 1 TB</td><td>2–4 × 3.84 TB U.2 NVMe</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2128-thinksystem-sr650a-v4-server" target="_blank" rel="noopener">LP2128</a></td></tr>
-          <tr><td>3.2</td><td>≥ 10 GbE FO · deseable 25 GbE</td><td>10/25GbE SFP28: hoy a 10, listo para 25</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2128-thinksystem-sr650a-v4-server" target="_blank" rel="noopener">LP2128</a></td></tr>
-          <tr><td>3.2</td><td>Fuentes redundantes N+1</td><td>2 × 3200 W hot-swap redundantes 1+1 · solo 200–240 V</td><td><span class="tag ok">Cumple</span></td><td><a href="https://pubs.lenovo.com/sr650a-v4/server_specifications_technical" target="_blank" rel="noopener">Specs SR650a V4</a></td></tr>
-          <tr><td>3.2</td><td>Garantía ≥ 3 años, ideal 5 · repuestos Ecuador</td><td>3 años base (7DGD); 4 h opcional</td><td><span class="tag warn">Validar</span></td><td>Cobertura en Cuenca</td></tr>
-          <tr><td>3.3</td><td>Sin storage nuevo · NVMe como caché</td><td>NVMe local por servidor</td><td><span class="tag ok">Cumple</span></td><td>Diseño</td></tr>
-          <tr><td>5</td><td>NVIDIA AI Enterprise por GPU y plazo</td><td>Vía Lenovo, precio educación: 3 años 7S02001KWW · 5 años 7S02001LWW</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2289-nvidia-software-product-guide" target="_blank" rel="noopener">LP2289</a></td></tr>
-          <tr><td>5</td><td>vSphere Foundation / Enterprise Plus</td><td>VVF o VCF por núcleo: 64 núcleos por servidor</td><td><span class="tag ok">Cumple</span></td><td><a href="https://docs.nvidia.com/vgpu/20.0/product-support-matrix/vmware-vsphere.html" target="_blank" rel="noopener">NVIDIA vGPU</a></td></tr>
-          <tr><td>5</td><td>KAI Scheduler</td><td>Open source, sin costo</td><td><span class="tag ok">Cumple</span></td><td>Documento §5</td></tr>
-          <tr><td>5</td><td>Run:ai (opcional)</td><td>La guía de Lenovo (mayo 2026) describe “NVIDIA Enterprise” con Run:ai self-hosted, pero los números de parte solo nombran AI Enterprise y Omniverse. Si no viene: EDU 3a 7S02004YWW · 5a 7S020051WW</td><td><span class="tag warn">Validar</span></td><td><a href="https://lenovopress.lenovo.com/lp2289-nvidia-software-product-guide" target="_blank" rel="noopener">LP2289</a></td></tr>
-          <tr><td>5</td><td>Sistema operativo</td><td>Ubuntu 22.04/24.04 y RHEL 9.7/10.1 soportados con esta GPU en SR650a V4</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td></tr>
-          <tr><td>5</td><td>Veeam</td><td>Backup &amp; Replication para VMs; Kasten si hay Kubernetes</td><td><span class="tag ok">Cumple</span></td><td>Partner Core</td></tr>
-          <tr><td>5</td><td>Monitoreo</td><td>DCGM + Prometheus + Grafana + XClarity Controller 3</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2128-thinksystem-sr650a-v4-server" target="_blank" rel="noopener">LP2128</a></td></tr>
-          <tr><td>6</td><td>Soporte en Ecuador, español, 24/7</td><td>Lenovo en sitio + mesa Core en primer nivel</td><td><span class="tag warn">Validar</span></td><td>Alcance 24/7 en Cuenca</td></tr>
-          <tr><td>6</td><td>Transferencia de conocimiento</td><td>Plan Core: drivers, MIG, orquestación, monitoreo, respaldos</td><td><span class="tag ok">Cumple</span></td><td>Core</td></tr>
-          <tr><td>6</td><td>PoC en la versión exacta</td><td>Equipo demo o laboratorio Lenovo con SR650a V4 + RTX PRO 6000</td><td><span class="tag warn">Validar</span></td><td>Lenovo Ecuador</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div></details><details class="more" style="margin-top:8px"><summary>Cómo se verificó y qué se corrigió</summary><div class="more-b"><div class="note"><span class="lbl">Verificación</span><p>Una segunda revisión, hecha sin ver este análisis, chequeó 17 afirmaciones contra las fuentes: <b>11 confirmadas</b>, <b>5 confirmadas con matices</b> (ya corregidas abajo) y <b>1 sin fuente</b> (ampliar de 2 a 4 GPUs después; sigue por validar).</p></div>
-      <div class="note"><span class="lbl">Corrección</span><p>La Etapa 3 proponía un SR650 V4 para producción. Lenovo <b>no soporta</b> esta GPU en el SR650 V4: solo en el <b>SR650a V4</b> (y SR650i V4) y en el <b>SR675 V3</b>. Ya quedó corregido.</p></div>
-    </div></details></section>
-<section class="sec">
-    <header><span class="lbl">4.5</span><h2>Por validar con Lenovo</h2><p>No bloquean, pero hay que confirmarlas antes de cotizar.</p></header>
-    <div class="tw">
-      <table class="t-min">
-        <thead><tr><th>#</th><th>Qué validar</th><th>Por qué</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>Disponibilidad de la GPU en Ecuador</td><td>Lenovo la marca como “Controlled”: no se ofrece en ciertos mercados por decisión del gobierno de EE. UU.</td></tr>
-          <tr><td>2</td><td>Tomas de 200–240 V en el rack del cliente</td><td>Las fuentes de 3200 W solo funcionan a 200–240 V (dato confirmado; falta saber qué tiene la U)</td></tr>
-          <tr><td>3</td><td>Pasar de 2 a 4 GPUs en el servidor de academia</td><td>Solo la versión de 450 W (CHWT) permite 4; confirmar que se puede ampliar después</td></tr>
-          <tr><td>4</td><td>ESXi + esta GPU en SR650a V4 con soporte Lenovo</td><td>El servidor está certificado para ESXi 9.0 y NVIDIA soporta la GPU en ESXi, pero la guía de Lenovo de la GPU no lista ESXi. Confirmar la combinación. El SR675 V3 no aparece certificado para ESXi</td></tr>
-          <tr><td>5</td><td>Garantía 24/7 con 4 h en Cuenca</td><td>El documento pide repuestos en Ecuador y opción 24/7 para producción</td></tr>
-          <tr><td>6</td><td>Run:ai incluido en NVIDIA Enterprise</td><td>Si viene incluido, no se cotiza aparte</td></tr>
-          <tr><td>7</td><td>Equipo para la PoC</td><td>El documento exige demostrar sobre la versión exacta ofertada</td></tr>
-        </tbody>
-      </table>
+    <header><span class="lbl">2.4</span><h2>Academia: asientos vs GPUs</h2><p>1 GPU de 96 GB = 4 pedazos de 24 GB = 4 estudiantes con GPU propia.</p></header>
+    <div class="col">
+      <p class="plain"><b>Cómo leerlo:</b> cada cuadro es un estudiante. Azul = tiene su pedazo de GPU. Amarillo = comparte y <dfn data-k="cola">espera turno</dfn>. Cambia los valores.</p>
+      <div class="ctrl">
+        <div class="seg"><span class="lbl">Estudiantes</span><div class="opts" id="stu"><button type="button" id="stu12" data-v="12" aria-pressed="false">12</button><button type="button" id="stu16" data-v="16" aria-pressed="true">16</button></div></div>
+        <div class="seg"><span class="lbl">GPUs academia</span><div class="opts" id="gpu"><button type="button" id="g1" data-v="1" aria-pressed="false">1</button><button type="button" id="g2" data-v="2" aria-pressed="true">2</button><button type="button" id="g4" data-v="4" aria-pressed="false">4</button></div></div>
+      </div>
+      <div class="seats" id="seats" aria-live="polite"></div>
+      <div class="legend">
+        <span><i class="sw" style="background:var(--navy)"></i><dfn data-k="particion">Partición dedicada</dfn></span>
+        <span><i class="sw" style="background:repeating-linear-gradient(135deg,#fff 0 3px,var(--warn) 3px 5px);border:1px solid var(--ink-2)"></i><dfn data-k="timeslice">Turnos / tiempo compartido</dfn></span>
+      </div>
+      <div class="verdict"><span class="big" id="seatBig">8 / 16</span><span id="seatVerdict"></span></div>
     </div>
   </section>
-  <div class="snav"><a class="btn" href="#e3">← Etapa 03</a><a class="btn pri" href="#e4p">Cómo funcionaría →</a></div>
+<section class="sec">
+    <header><span class="lbl">2.5</span><h2>RTX PRO 6000 vs H200 NVL</h2><p>Las dos únicas GPUs de Lenovo que se acercan al §3.1.</p></header>
+    <div class="col">
+      <div class="tw">
+        <table class="spec gcmp" style="min-width:520px">
+          <thead><tr><th>Requisito §3.1</th><th>RTX PRO 6000 BSE</th><th>H200 NVL</th></tr></thead>
+          <tbody>
+            <tr><td>Memoria ≥ 96 GB · ECC</td><td class="y">96 GB GDDR7</td><td class="y">141 GB HBM3e</td></tr>
+            <tr><td>≥ 1.7 TB/s (ref.)</td><td class="n">1.6 TB/s</td><td class="y">4.8 TB/s</td></tr>
+            <tr><td>≥ 4 instancias HW (MIG)</td><td class="y">4 × 24 GB</td><td class="y">7 × 16.5 GB</td></tr>
+            <tr><td>vGPU en hipervisor</td><td class="y">Sí</td><td class="y">Sí</td></tr>
+            <tr><td>FP8 nativo</td><td class="y">Sí</td><td class="y">Sí</td></tr>
+            <tr><td>FP4 nativo</td><td class="y">Sí</td><td class="n">No</td></tr>
+            <tr><td>PCIe Gen5</td><td class="y">Gen5</td><td class="y">Gen5</td></tr>
+            <tr><td>≤ 600 W</td><td class="y">600 / 450 W</td><td class="y">600 W</td></tr>
+            <tr><td>Pasiva · aire</td><td class="y">Sí</td><td class="y">Sí</td></tr>
+            <tr class="tot"><td>Cumple del §3.1</td><td class="d">8 de 9 <small>falla: ancho de banda (ref.)</small></td><td class="d">8 de 9 <small>falla: FP4</small></td></tr>
+            <tr><td>En SR650a V4</td><td class="d">2 a 600 W · 4 a 450 W</td><td class="d">hasta 2</td></tr>
+            <tr><td>NVIDIA AI Enterprise</td><td class="d">Se compra aparte</td><td class="d y2">Incluye 5 años</td></tr>
+            <tr><td>Parte Lenovo</td><td class="d">4X67B09287</td><td class="d">4X67A97315</td></tr>
+            <tr class="src"><td>Fuente</td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td><td><a href="https://lenovopress.lenovo.com/lp1944-thinksystem-nvidia-h200-141gb-gpus" target="_blank" rel="noopener">LP1944</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="two">
+        <div><span class="tag ok">RTX PRO 6000</span><ul><li>Cumple FP4 y las 4 particiones de 24 GB que pide academia</li><li>Entra en SR650i y SR650a V4</li><li>Queda corta en ancho de banda (1.6 vs 1.7 TB/s, referencial)</li><li>Licencia NVIDIA se compra aparte</li></ul></div>
+        <div><span class="tag warn">H200 NVL</span><ul><li>141 GB y 4.8 TB/s: producción responde más rápido</li><li>Trae 5 años de licencia NVIDIA</li><li>No tiene FP4 y sus particiones son de 16.5 GB</li><li>Solo en SR650a V4 (máx. 2) · precio mayor</li></ul></div>
+      </div>
+      <p class="plain"><b>Descartadas:</b> H100 NVL (94 GB, no llega a 96, sin FP4), L40S y L4 (sin particiones por hardware, sin FP4, PCIe Gen4, poca memoria). La L40S la sugiere el propio documento pero contradice su §3.1.</p>
+      <p class="plain"><b>Ojo:</b> la fila vGPU es “soportada por NVIDIA vGPU”; la versión exacta por GPU se confirma en la matriz de NVIDIA. La H200 NVL también está marcada por Lenovo como “Controlled”. La cantidad máxima por servidor se confirma en el configurador de Lenovo.</p>
+    </div>
+  </section>
+  <div class="snav"><a class="btn" href="#e1">← 01 · El pedido</a><a class="btn pri" href="#e4p">03 · Cómo funcionaría →</a></div>
   </div>
 </div>
 <div class="stage" id="e4p" role="tabpanel" hidden>
-  <div class="shead"><div class="in"><span class="num">PROPUESTA</span><div><h2>Cómo funcionaría</h2><p>Nuestra forma de plantearle a la U la plataforma completa: qué ve cada persona, qué herramientas usamos y cómo salimos de GCP.</p></div><span class="status pend">Propuesta Core</span></div></div>
+  <div class="shead"><div class="in"><span class="num">03</span><div><h2>Cómo funcionaría</h2><p>Cómo le planteamos a la U la plataforma completa con las herramientas de Core.</p></div><span class="status pend">Propuesta</span></div></div>
   <div class="in">
-  <section class="sec">
-    <header><span class="lbl">P.1</span><h2>La propuesta en una frase</h2><p>Cómo quedaría funcionando, con las herramientas que maneja Core.</p></header>
+<section class="sec">
+    <header><span class="lbl">3.1</span><h2>La propuesta en una frase</h2><p>Cómo quedaría funcionando, con las herramientas que maneja Core.</p></header>
     <div class="col">
       <p class="lede2">Dos servidores Lenovo independientes dentro del <b>VMware que la U ya tiene</b>. Los servicios de Google Cloud corren como <b>contenedores en Kubernetes dentro de VMware</b> (VKS), y los estudiantes entran desde el navegador a <b>JupyterHub</b> con su cuenta institucional.</p>
       <div class="stage-box scroll-x"><svg class="pdiag" viewBox="0 0 1000 600" role="img" aria-label="Arquitectura propuesta">
@@ -1588,9 +1401,8 @@ Coresolutions</pre>
       <p class="plain"><b>Qué es propuesta nuestra y qué es del documento:</b> el documento plantea dos caminos por separado (VMware con vGPU o Kubernetes). Nosotros proponemos <b>juntarlos</b>: Kubernetes corriendo dentro de VMware. Así la U mantiene la herramienta que ya conoce y recibe los contenedores de GCP casi sin cambios.</p>
     </div>
   </section>
-
-  <section class="sec">
-    <header><span class="lbl">P.2</span><h2>Cómo lo usa cada persona</h2><p>El día a día, paso a paso.</p></header>
+<section class="sec">
+    <header><span class="lbl">3.2</span><h2>Cómo lo usa cada persona</h2><p>El día a día, paso a paso.</p></header>
     <div class="three">
       <div><span class="tag core">Funcionario</span><ol class="steps2">
         <li>Abre el chatbot como hoy</li>
@@ -1613,9 +1425,8 @@ Coresolutions</pre>
       </ol></div>
     </div>
   </section>
-
-  <section class="sec">
-    <header><span class="lbl">P.3</span><h2>Capas y herramientas</h2><p>Qué usamos en cada capa y quién la opera.</p></header>
+<section class="sec">
+    <header><span class="lbl">3.3</span><h2>Capas y herramientas</h2><p>Qué usamos en cada capa y quién la opera.</p></header>
     <div class="tw">
       <table class="spec" style="min-width:680px">
         <thead><tr><th>Capa</th><th>Qué usamos</th><th>Marca</th><th>Quién la opera</th></tr></thead>
@@ -1636,9 +1447,65 @@ Coresolutions</pre>
       </table>
     </div>
   </section>
-
-  <section class="sec">
-    <header><span class="lbl">P.4</span><h2>Cómo salimos de Google Cloud</h2><p>Por fases, sin apagar nada hasta validar.</p></header>
+<section class="sec">
+    <header><span class="lbl">3.4</span><h2>Licencias</h2><p>Qué exige cada fabricante según se use VMware o Kubernetes.</p></header>
+    <div class="col">
+      <details class="more"><summary>VMware o Kubernetes: diferencias, requisitos y licencias</summary><div class="more-b"><div class="tw">
+        <table>
+          <thead><tr><th></th><th>VMware <dfn data-k="vgpu">vGPU</dfn></th><th><dfn data-k="k8s">Kubernetes</dfn></th></tr></thead>
+          <tbody>
+            <tr><td>Qué recibe cada servicio</td><td><dfn data-k="vm">Máquina virtual</dfn></td><td><dfn data-k="contenedor">Contenedor</dfn></td></tr>
+            <tr><td>Migrar desde GCP</td><td>Hay que reempaquetar</td><td>Casi directo (ya usan <dfn data-k="docker">Docker / vLLM</dfn>)</td></tr>
+            <tr><td>Estudiantes</td><td>Una VM con GPU cada uno</td><td><dfn data-k="jupyter">JupyterHub</dfn> + <dfn data-k="kai">KAI</dfn> / <dfn data-k="runai">Run:ai</dfn></td></tr>
+            <tr><td>Licencia obligatoria</td><td class="d"><dfn data-k="nvaie">NVAIE</dfn> + <dfn data-k="vsphere">vSphere</dfn></td><td class="d">Ninguna</td></tr>
+            <tr><td>Equipo DTIC</td><td><span class="tag ok">Lo conoce</span></td><td><span class="tag warn">Nuevo</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="plain"><b>Tercera vía que no mencionan:</b> <dfn data-k="vks">Kubernetes dentro de VMware (VKS)</dfn>. Reciben los contenedores de GCP casi directo sin dejar la plataforma que ya conocen. Es lo que proponemos (ver Cómo funcionaría).</p>
+    
+<div class="two">
+      <div><span class="tag core">VMware vGPU</span><ul>
+        <li>ESXi 8.0 U3g+ o VCF 9.0.1+ <small class="d">(NVIDIA)</small></li>
+        <li>Edición: vSphere Foundation o Enterprise Plus</li>
+        <li>NVIDIA AI Enterprise EDU por GPU (4 licencias)</li>
+        <li>MIG-backed vGPU: hasta 4 particiones por GPU</li>
+        <li>Turnos dentro de cada partición: disponibles en VCF 9.1 según las notas de vGPU 19.4 y 20 → probar en la PoC</li>
+      </ul></div>
+      <div><span class="tag core">Kubernetes</span><ul>
+        <li>Opción Core: <dfn data-k="vks">VKS</dfn> dentro de VCF, sin dejar VMware</li>
+        <li>Opción sin VMware: Ubuntu 24.04 en el servidor + NVIDIA GPU Operator</li>
+        <li>Reparto: KAI (gratis) o Run:ai</li>
+        <li>MIG en contenedores sin licencia vGPU</li>
+        <li>Respaldo: Veeam Kasten</li>
+      </ul></div>
+    </div>
+<div class="tw">
+        <table class="spec" style="min-width:600px">
+          <thead><tr><th>Licencia</th><th>VMware vGPU / VKS</th><th>Kubernetes sin VMware</th></tr></thead>
+          <tbody>
+            <tr><td><dfn data-k="nvaie">NVIDIA AI Enterprise</dfn></td><td class="d">4 GPUs · obligatoria</td><td class="d">No necesaria</td></tr>
+            <tr><td><dfn data-k="vsphere">vSphere</dfn> <dfn data-k="vcf">VVF / VCF</dfn></td><td class="d"><dfn data-k="nucleos">~112–128 núcleos (2 servidores)</dfn></td><td class="d">No aplica</td></tr>
+            <tr><td><dfn data-k="rhel">Sistema operativo</dfn></td><td class="d">Dentro de las VMs</td><td class="d">Ubuntu gratis · RHEL / <dfn data-k="openshift">OpenShift</dfn> por servidor</td></tr>
+            <tr><td>Reparto de GPU</td><td class="d">Incluido en vGPU</td><td class="d"><dfn data-k="kai">KAI</dfn> gratis · <dfn data-k="runai">Run:ai</dfn> opcional</td></tr>
+            <tr><td>Respaldo</td><td class="d"><dfn data-k="veeam">Veeam</dfn> (+ Kasten si VKS)</td><td class="d"><dfn data-k="kasten">Veeam Kasten</dfn> por nodo</td></tr>
+          </tbody>
+        </table>
+      </div></div></details>
+      <div>
+        <span class="lbl">NVIDIA AI Enterprise · 4 GPUs · <dfn data-k="lista">precio lista NVIDIA</dfn> USD</span>
+        <div class="money" style="margin-top:8px">
+          <div><span class="d">3 años · normal</span><b class="d">$54 000</b></div>
+          <div><span class="d">5 años · normal</span><b class="d">$72 000</b></div>
+          <div class="edu"><span class="d">3 años · <dfn data-k="edu">educación</dfn></span><b class="d">$13 500</b></div>
+          <div class="edu"><span class="d">5 años · <dfn data-k="edu">educación</dfn></span><b class="d">$18 000</b></div>
+        </div>
+      </div>
+      <p class="plain"><b>En simple:</b> con VMware se paga NVIDIA por cada GPU y los núcleos de VMware. Sin VMware se ahorran ambas, pero DTIC aprende Kubernetes desde cero. Si la U califica como educativa, NVIDIA baja 75%.</p>
+    </div>
+  </section>
+<section class="sec">
+    <header><span class="lbl">3.5</span><h2>Cómo salimos de Google Cloud</h2><p>Por fases, sin apagar nada hasta validar.</p></header>
     <div class="phase">
       <div><span class="d">1</span><b>Prueba de concepto</b><small>Migrar 1 servicio y demostrar el aislamiento producción ↔ academia en la versión exacta ofertada (lo pide el §6).</small></div>
       <div><span class="d">2</span><b>Instalación</b><small>Servidores en rack, VMware, drivers NVIDIA, particiones, VKS, VLANs, respaldo y monitoreo.</small></div>
@@ -1647,9 +1514,8 @@ Coresolutions</pre>
       <div><span class="d">5</span><b>Baja de GCP</b><small>Solo cuando todos los servicios están validados. Academia puede arrancar en paralelo desde la fase 3.</small></div>
     </div>
   </section>
-
-  <section class="sec">
-    <header><span class="lbl">P.5</span><h2>Soporte y capacitación</h2><p>Quién responde y qué aprende DTIC.</p></header>
+<section class="sec">
+    <header><span class="lbl">3.6</span><h2>Soporte y capacitación</h2><p>Quién responde y qué aprende DTIC.</p></header>
     <div class="two">
       <div><span class="tag core">Soporte</span><ul>
         <li><b>Nivel 1:</b> mesa de ayuda Core, en español; opción 24/7 para producción</li>
@@ -1666,62 +1532,75 @@ Coresolutions</pre>
       </ul></div>
     </div>
   </section>
-
-  <section class="sec">
-    <header><span class="lbl">P.6</span><h2>Lo que la U tiene que decidir</h2><p>Para cerrar el diseño.</p></header>
+  <div class="snav"><a class="btn" href="#e4">← 02 · La solución</a><a class="btn pri" href="#e5">04 · Cumplimiento y pasos →</a></div>
+  </div>
+</div>
+<div class="stage" id="e5" role="tabpanel" hidden>
+  <div class="shead"><div class="in"><span class="num">04</span><div><h2>Cumplimiento y pasos</h2><p>Los 32 requisitos, qué validar con Lenovo y qué sigue.</p></div><span class="status todo">Validar con Lenovo</span></div></div>
+  <div class="in">
+<section class="sec">
+    <header><span class="lbl">4.1</span><h2>Matriz de cumplimiento</h2><p>Los 32 requisitos uno por uno. Toca la fuente para abrirla.</p></header>
+    <details class="more"><summary>Ver los 32 requisitos uno por uno</summary><div class="more-b"><div class="tw">
+      <table class="t-min cm">
+        <thead><tr><th>§</th><th>Requisito</th><th>Cómo lo cumplimos</th><th>Estado</th><th>Fuente</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Producción y academia no comparten GPU física</td><td>Dos servidores separados, uno por rol</td><td><span class="tag ok">Cumple</span></td><td>Diseño</td></tr>
+          <tr><td>1</td><td>VLAN dedicada</td><td>Puertos 10/25GbE en trunk con VLANs separadas</td><td><span class="tag ok">Cumple</span></td><td>Configuración</td></tr>
+          <tr><td>1</td><td>Rack ≤ 8 kW</td><td>~4.0–4.2 kW según configuración (estimado)</td><td><span class="tag ok">Cumple</span></td><td>Estimación Core</td></tr>
+          <tr><td>1</td><td>10 Gb por fibra al storage</td><td>Broadcom 57414 SFP28 (4XC7A08238) + ópticas 10G SR SFP+ (4TC7A78615)</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp0781-broadcom-57414-25gb-ethernet-adapters" target="_blank" rel="noopener">LP0781</a></td></tr>
+          <tr><td>1</td><td>Integrarse con VMware vSphere</td><td>SR650a V4 certificado para ESXi 9.0. La guía de la GPU no lista ESXi: el soporte de GPU en VMware viene de la matriz de NVIDIA</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/osig" target="_blank" rel="noopener">OSIG</a></td></tr>
+          <tr><td>3.1</td><td>≥ 96 GB VRAM con ECC</td><td>96 GB GDDR7 con ECC</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a> · <a href="https://www.nvidia.com/en-us/data-center/rtx-pro-6000-blackwell-server-edition/" target="_blank" rel="noopener">NVIDIA</a></td></tr>
+          <tr class="dev"><td>3.1</td><td>≥ 1.7 TB/s (referencial)</td><td>Hasta 1597 GB/s (~1.6 TB/s)</td><td><span class="tag crit">Desviación</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td></tr>
+          <tr><td>3.1</td><td>≥ 4 instancias aisladas por HW</td><td>“Up to 4 MIGs @ 24GB”</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td></tr>
+          <tr><td>3.1</td><td>vGPU certificada en el hipervisor</td><td>NVIDIA vGPU: ESXi 8.0 U3g+ y VCF 9.0.1+. vGPU sobre particiones MIG; turnos dentro de cada partición en VCF 9.1</td><td><span class="tag ok">Cumple</span></td><td><a href="https://docs.nvidia.com/vgpu/20.0/product-support-matrix/vmware-vsphere.html" target="_blank" rel="noopener">NVIDIA vGPU</a> · <a href="https://docs.nvidia.com/ai-enterprise/release-8/latest/infra-software/vgpu/features/mig-backed-vgpu.html" target="_blank" rel="noopener">MIG-vGPU</a></td></tr>
+          <tr><td>3.1</td><td>FP8 / FP4 + FP16 / BF16</td><td>FP4 4 PF · FP8 2 PF · FP16/BF16 1 PF</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td></tr>
+          <tr><td>3.1</td><td>PCIe Gen5</td><td>PCIe 5.0 x16</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td></tr>
+          <tr><td>3.1</td><td>≤ 600 W por GPU</td><td>600 W, o limitada a 450 W</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td></tr>
+          <tr><td>3.1</td><td>Enfriamiento por aire</td><td>GPU pasiva · servidor con 6 ventiladores N+1 (con 2 CPU)</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2128-thinksystem-sr650a-v4-server" target="_blank" rel="noopener">LP2128</a></td></tr>
+          <tr><td>3.1</td><td>Server Edition pasiva certificada</td><td>Opción ThinkSystem 4X67B09287</td><td><span class="tag ok">Cumple</span></td><td><a href="https://serverproven.lenovo.com/option/4X67B09287/" target="_blank" rel="noopener">ServerProven</a></td></tr>
+          <tr><td>3.2</td><td>Aloja 2 o 4 GPUs doble ancho</td><td>SR650a V4: 2 a 600 W (solo slots 21 y 23) o 4 a 450 W</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td></tr>
+          <tr><td>3.2</td><td>Doble socket · ≥ 48 vCPU</td><td>2 × Xeon 6530P 32C = 128 hilos</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2128-thinksystem-sr650a-v4-server" target="_blank" rel="noopener">LP2128</a></td></tr>
+          <tr><td>3.2</td><td>RAM ≥ 128 GB (rec. 256–512)</td><td>512 GB DDR5 6400</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2128-thinksystem-sr650a-v4-server" target="_blank" rel="noopener">LP2128</a></td></tr>
+          <tr><td>3.2</td><td>NVMe local ≥ 1 TB</td><td>2–4 × 3.84 TB U.2 NVMe</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2128-thinksystem-sr650a-v4-server" target="_blank" rel="noopener">LP2128</a></td></tr>
+          <tr><td>3.2</td><td>≥ 10 GbE FO · deseable 25 GbE</td><td>10/25GbE SFP28: hoy a 10, listo para 25</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2128-thinksystem-sr650a-v4-server" target="_blank" rel="noopener">LP2128</a></td></tr>
+          <tr><td>3.2</td><td>Fuentes redundantes N+1</td><td>2 × 3200 W hot-swap redundantes 1+1 · solo 200–240 V</td><td><span class="tag ok">Cumple</span></td><td><a href="https://pubs.lenovo.com/sr650a-v4/server_specifications_technical" target="_blank" rel="noopener">Specs SR650a V4</a></td></tr>
+          <tr><td>3.2</td><td>Garantía ≥ 3 años, ideal 5 · repuestos Ecuador</td><td>3 años base (7DGD); 4 h opcional</td><td><span class="tag warn">Validar</span></td><td>Cobertura en Cuenca</td></tr>
+          <tr><td>3.3</td><td>Sin storage nuevo · NVMe como caché</td><td>NVMe local por servidor</td><td><span class="tag ok">Cumple</span></td><td>Diseño</td></tr>
+          <tr><td>5</td><td>NVIDIA AI Enterprise por GPU y plazo</td><td>Vía Lenovo, precio educación: 3 años 7S02001KWW · 5 años 7S02001LWW</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2289-nvidia-software-product-guide" target="_blank" rel="noopener">LP2289</a></td></tr>
+          <tr><td>5</td><td>vSphere Foundation / Enterprise Plus</td><td>VVF o VCF por núcleo: 64 núcleos por servidor</td><td><span class="tag ok">Cumple</span></td><td><a href="https://docs.nvidia.com/vgpu/20.0/product-support-matrix/vmware-vsphere.html" target="_blank" rel="noopener">NVIDIA vGPU</a></td></tr>
+          <tr><td>5</td><td>KAI Scheduler</td><td>Open source, sin costo</td><td><span class="tag ok">Cumple</span></td><td>Documento §5</td></tr>
+          <tr><td>5</td><td>Run:ai (opcional)</td><td>La guía de Lenovo (mayo 2026) describe “NVIDIA Enterprise” con Run:ai self-hosted, pero los números de parte solo nombran AI Enterprise y Omniverse. Si no viene: EDU 3a 7S02004YWW · 5a 7S020051WW</td><td><span class="tag warn">Validar</span></td><td><a href="https://lenovopress.lenovo.com/lp2289-nvidia-software-product-guide" target="_blank" rel="noopener">LP2289</a></td></tr>
+          <tr><td>5</td><td>Sistema operativo</td><td>Ubuntu 22.04/24.04 y RHEL 9.7/10.1 soportados con esta GPU en SR650a V4</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td></tr>
+          <tr><td>5</td><td>Veeam</td><td>Backup &amp; Replication para VMs; Kasten si hay Kubernetes</td><td><span class="tag ok">Cumple</span></td><td>Partner Core</td></tr>
+          <tr><td>5</td><td>Monitoreo</td><td>DCGM + Prometheus + Grafana + XClarity Controller 3</td><td><span class="tag ok">Cumple</span></td><td><a href="https://lenovopress.lenovo.com/lp2128-thinksystem-sr650a-v4-server" target="_blank" rel="noopener">LP2128</a></td></tr>
+          <tr><td>6</td><td>Soporte en Ecuador, español, 24/7</td><td>Lenovo en sitio + mesa Core en primer nivel</td><td><span class="tag warn">Validar</span></td><td>Alcance 24/7 en Cuenca</td></tr>
+          <tr><td>6</td><td>Transferencia de conocimiento</td><td>Plan Core: drivers, MIG, orquestación, monitoreo, respaldos</td><td><span class="tag ok">Cumple</span></td><td>Core</td></tr>
+          <tr><td>6</td><td>PoC en la versión exacta</td><td>Equipo demo o laboratorio Lenovo con SR650a V4 + RTX PRO 6000</td><td><span class="tag warn">Validar</span></td><td>Lenovo Ecuador</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div></details><details class="more" style="margin-top:8px"><summary>Cómo se verificó y qué se corrigió</summary><div class="more-b"><div class="note"><span class="lbl">Verificación</span><p>Una segunda revisión, hecha sin ver este análisis, chequeó 17 afirmaciones contra las fuentes: <b>11 confirmadas</b>, <b>5 confirmadas con matices</b> (ya corregidas abajo) y <b>1 sin fuente</b> (ampliar de 2 a 4 GPUs después; sigue por validar).</p></div>
+      <div class="note"><span class="lbl">Corrección</span><p>Un primer cálculo proponía un SR650 V4 para producción. Lenovo <b>no soporta</b> esta GPU en el SR650 V4: solo en el <b>SR650a V4</b> (y SR650i V4) y en el <b>SR675 V3</b>. Ya quedó corregido.</p></div>
+    </div></details></section>
+<section class="sec">
+    <header><span class="lbl">4.2</span><h2>Por validar con Lenovo</h2><p>No bloquean, pero hay que confirmarlas antes de cotizar.</p></header>
     <div class="tw">
       <table class="t-min">
+        <thead><tr><th>#</th><th>Qué validar</th><th>Por qué</th></tr></thead>
         <tbody>
-          <tr><td><span class="tag warn">Licencia</span></td><td>¿Tienen VCF o VVF? VKS viene con VCF; con VVF hay que validarlo</td><td>Si no hay VKS: vGPU con máquinas virtuales, o Ubuntu con Kubernetes</td></tr>
-          <tr><td><span class="tag warn">Academia</span></td><td>¿16 o 12 estudiantes con GPU propia?</td><td>Define Config 1 o Config 2</td></tr>
-          <tr><td><span class="tag warn">Acceso</span></td><td>¿Con qué cuenta entran los estudiantes: LDAP, Microsoft o Google?</td><td>JupyterHub se conecta a cualquiera</td></tr>
-          <tr><td><span class="tag warn">Perfiles</span></td><td>¿Todas las materias usan el mismo perfil de 24 GB?</td><td>Se pueden crear perfiles por materia</td></tr>
-          <tr><td><span class="tag warn">Operación</span></td><td>¿DTIC opera todo o contrata monitoreo gestionado con Core?</td><td>Cambia el alcance del soporte</td></tr>
+          <tr><td>1</td><td>Disponibilidad de la GPU en Ecuador</td><td>Lenovo la marca como “Controlled”: no se ofrece en ciertos mercados por decisión del gobierno de EE. UU.</td></tr>
+          <tr><td>2</td><td>Tomas de 200–240 V en el rack del cliente</td><td>Las fuentes de 3200 W solo funcionan a 200–240 V (dato confirmado; falta saber qué tiene la U)</td></tr>
+          <tr><td>3</td><td>Pasar de 2 a 4 GPUs en el servidor de academia</td><td>Solo la versión de 450 W (CHWT) permite 4; confirmar que se puede ampliar después</td></tr>
+          <tr><td>4</td><td>ESXi + esta GPU en SR650a V4 con soporte Lenovo</td><td>El servidor está certificado para ESXi 9.0 y NVIDIA soporta la GPU en ESXi, pero la guía de Lenovo de la GPU no lista ESXi. Confirmar la combinación. El SR675 V3 no aparece certificado para ESXi</td></tr>
+          <tr><td>5</td><td>Garantía 24/7 con 4 h en Cuenca</td><td>El documento pide repuestos en Ecuador y opción 24/7 para producción</td></tr>
+          <tr><td>6</td><td>Run:ai incluido en NVIDIA Enterprise</td><td>Si viene incluido, no se cotiza aparte</td></tr>
+          <tr><td>7</td><td>Equipo para la PoC</td><td>El documento exige demostrar sobre la versión exacta ofertada</td></tr>
         </tbody>
       </table>
     </div>
   </section>
-
-  <div class="snav"><a class="btn" href="#e4">← Etapa 04</a><a class="btn pri" href="#e4b">04b · Opciones de GPU →</a></div>
-  </div>
-</div>
-<div class="stage" id="e4b" role="tabpanel" hidden>
-  <div class="shead"><div class="in"><span class="num">ETAPA 04b</span><div><h2>Opciones de GPU</h2><p>RTX PRO 6000 frente a H200, y qué pasa si se ajustan los requisitos.</p></div><span class="status pend">En curso</span></div></div>
-  <div class="in">
-<section class="sec">
-    <header><span class="lbl">G.1</span><h2>RTX PRO 6000 vs H200 NVL</h2><p>Las dos únicas GPUs de Lenovo que se acercan al §3.1.</p></header>
-    <div class="col">
-      <div class="tw">
-        <table class="spec gcmp" style="min-width:520px">
-          <thead><tr><th>Requisito §3.1</th><th>RTX PRO 6000 BSE</th><th>H200 NVL</th></tr></thead>
-          <tbody>
-            <tr><td>Memoria ≥ 96 GB · ECC</td><td class="y">96 GB GDDR7</td><td class="y">141 GB HBM3e</td></tr>
-            <tr><td>≥ 1.7 TB/s (ref.)</td><td class="n">1.6 TB/s</td><td class="y">4.8 TB/s</td></tr>
-            <tr><td>≥ 4 instancias HW (MIG)</td><td class="y">4 × 24 GB</td><td class="y">7 × 16.5 GB</td></tr>
-            <tr><td>vGPU en hipervisor</td><td class="y">Sí</td><td class="y">Sí</td></tr>
-            <tr><td>FP8 nativo</td><td class="y">Sí</td><td class="y">Sí</td></tr>
-            <tr><td>FP4 nativo</td><td class="y">Sí</td><td class="n">No</td></tr>
-            <tr><td>PCIe Gen5</td><td class="y">Gen5</td><td class="y">Gen5</td></tr>
-            <tr><td>≤ 600 W</td><td class="y">600 / 450 W</td><td class="y">600 W</td></tr>
-            <tr><td>Pasiva · aire</td><td class="y">Sí</td><td class="y">Sí</td></tr>
-            <tr class="tot"><td>Cumple del §3.1</td><td class="d">8 de 9 <small>falla: ancho de banda (ref.)</small></td><td class="d">8 de 9 <small>falla: FP4</small></td></tr>
-            <tr><td>En SR650a V4</td><td class="d">2 a 600 W · 4 a 450 W</td><td class="d">hasta 2</td></tr>
-            <tr><td>NVIDIA AI Enterprise</td><td class="d">Se compra aparte</td><td class="d y2">Incluye 5 años</td></tr>
-            <tr><td>Parte Lenovo</td><td class="d">4X67B09287</td><td class="d">4X67A97315</td></tr>
-            <tr class="src"><td>Fuente</td><td><a href="https://lenovopress.lenovo.com/lp2263-thinksystem-nvidia-rtx-pro-6000-blackwell-server-edition-pcie-gen5-gpu" target="_blank" rel="noopener">LP2263</a></td><td><a href="https://lenovopress.lenovo.com/lp1944-thinksystem-nvidia-h200-141gb-gpus" target="_blank" rel="noopener">LP1944</a></td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="two">
-        <div><span class="tag ok">RTX PRO 6000</span><ul><li>Cumple FP4 y las 4 particiones de 24 GB que pide academia</li><li>Entra en SR650i y SR650a V4</li><li>Queda corta en ancho de banda (1.6 vs 1.7 TB/s, referencial)</li><li>Licencia NVIDIA se compra aparte</li></ul></div>
-        <div><span class="tag warn">H200 NVL</span><ul><li>141 GB y 4.8 TB/s: producción responde más rápido</li><li>Trae 5 años de licencia NVIDIA</li><li>No tiene FP4 y sus particiones son de 16.5 GB</li><li>Solo en SR650a V4 (máx. 2) · precio mayor</li></ul></div>
-      </div>
-      <p class="plain"><b>Descartadas:</b> H100 NVL (94 GB, no llega a 96, sin FP4), L40S y L4 (sin particiones por hardware, sin FP4, PCIe Gen4, poca memoria). La L40S la sugiere el propio documento pero contradice su §3.1.</p>
-      <p class="plain"><b>Ojo:</b> la fila vGPU es “soportada por NVIDIA vGPU”; la versión exacta por GPU se confirma en la matriz de NVIDIA. La H200 NVL también está marcada por Lenovo como “Controlled”. La cantidad máxima por servidor se confirma en el configurador de Lenovo.</p>
-    </div>
-  </section>
 <section class="sec" id="s48">
-    <header><span class="lbl">G.2</span><h2>¿Y si se flexibilizan los requisitos?</h2><p>Mueve cada requisito y mira qué GPUs entran, cuántas harían falta y cuánto consumen.</p></header>
+    <header><span class="lbl">4.3</span><h2>¿Y si se flexibilizan los requisitos?</h2><p>Mueve cada requisito y mira qué GPUs entran, cuántas harían falta y cuánto consumen.</p></header>
     <div class="col">
       <div class="ctl" id="rxPre"><span class="lbl" style="margin-right:4px">Escenarios</span>
         <button class="ub" type="button" data-pre="doc">Documento tal cual</button>
@@ -1745,17 +1624,11 @@ Con estos ajustes, al menos dos GPUs del mercado cumplen la especificación comp
       </div>
     </div></details></div>
   </section>
-  <div class="snav"><a class="btn" href="#e4p">← Cómo funcionaría</a><a class="btn pri" href="#e5">Próximos pasos →</a></div>
-  </div>
-</div>
-<div class="stage" id="e5" role="tabpanel" hidden>
-  <div class="shead"><div class="in"><span class="num">PRÓXIMOS PASOS</span><div><h2>Qué falta para la propuesta</h2><p>Cotizaciones, servicios, PoC y el documento final.</p></div><span class="status todo">Pendiente</span></div></div>
-  <div class="in">
-  <section class="sec">
-    <header><span class="lbl">5.1</span><h2>Lo que sigue</h2><p>En orden.</p></header>
+<section class="sec">
+    <header><span class="lbl">4.4</span><h2>Próximos pasos</h2><p>En orden.</p></header>
     <div class="nxt">
       <div><span class="tag warn">Ahora</span><ol class="todo-list">
-        <li><span>Pedir la reunión técnica<small>Correo listo en la Etapa 02, con las 10 preguntas.</small></span></li>
+        <li><span>Pedir la reunión técnica<small>Con las 10 preguntas de la pestaña El pedido.</small></span></li>
         <li><span>Armar las configuraciones en Lenovo<small>Configurador DCSC; validar los 7 puntos y pedir precios de las 4 configuraciones.</small></span></li>
         <li><span>Confirmar el canal de licencias NVIDIA<small>¿Core las vende vía Lenovo o por mayorista?</small></span></li>
       </ol></div>
@@ -1779,11 +1652,9 @@ Con estos ajustes, al menos dos GPUs del mercado cumplen la especificación comp
       </ol></div>
     </div>
   </section>
-  <div class="snav"><a class="btn" href="#e4">← Etapa 04</a><span></span></div>
+  <div class="snav"><a class="btn" href="#e4p">← 03 · Cómo funcionaría</a><span></span></div>
   </div>
 </div>
-
-<!-- ===================== GLOSARIO ===================== -->
 <div class="stage" id="g" role="tabpanel" aria-labelledby="tg" hidden>
   <div class="shead"><div class="in"><span class="num">GLOSARIO</span><div><h2>Términos en simple</h2><p id="glossCount">Todo lo que aparece subrayado en esta página.</p></div><span></span></div></div>
   <div class="in"><section class="sec" style="grid-template-columns:minmax(0,1fr)"><div class="gloss" id="gloss"></div></section></div>
@@ -2275,15 +2146,6 @@ Con estos ajustes, al menos dos GPUs del mercado cumplen la especificación comp
   document.getElementById('stu').addEventListener('click',e=>{const b=e.target.closest('button');if(b){S=+b.dataset.v;render();}});
   document.getElementById('gpu').addEventListener('click',e=>{const b=e.target.closest('button');if(b){G=+b.dataset.v;render();}});
   render();
-
-  /* ---- copy mail ---- */
-  const cb=document.getElementById('copyMail');
-  cb.addEventListener('click',()=>{
-    const t=document.getElementById('mailTxt');
-    const done=()=>{cb.textContent='Copiado';setTimeout(()=>cb.textContent='Copiar',1800);};
-    const sel=()=>{const r=document.createRange();r.selectNodeContents(t);const s=getSelection();s.removeAllRanges();s.addRange(r);cb.textContent='Texto seleccionado';};
-    try{navigator.clipboard.writeText(t.innerText).then(done,sel);}catch(_){sel();}
-  });
 
   /* ---- glosario ---- */
 const G_ = {

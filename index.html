@@ -823,6 +823,10 @@ details.more>summary:focus-visible{outline:2px solid var(--accent);outline-offse
 .nr-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:18px}
 .nr-l,.nr-r{display:flex;flex-direction:column;gap:10px;min-width:0}
 @media (max-width:980px){.nr-g{grid-template-columns:1fr}}
+.resp td.ours,.resp th.ours{background:#eef0ff}
+.resp th.ours{color:var(--navy)}
+.resp td{vertical-align:top}
+.lic{table-layout:fixed}.lic td,.lic th{white-space:normal!important;overflow-wrap:anywhere}.lic td small{display:block;color:var(--ink-3);font-size:12px}
 </style>
 </head>
 <body>
@@ -1448,50 +1452,27 @@ details.more>summary:focus-visible{outline:2px solid var(--accent);outline-offse
     </div>
   </section>
 <section class="sec">
-    <header><span class="lbl">3.4</span><h2>Licencias</h2><p>Qué exige cada fabricante según se use VMware o Kubernetes.</p></header>
+    <header><span class="lbl">3.4</span><h2>Orquestación · respuesta al §4.2</h2><p>Su tabla de dos paradigmas, con lo que proponemos en la última columna.</p></header>
     <div class="col">
-      <details class="more"><summary>VMware o Kubernetes: diferencias, requisitos y licencias</summary><div class="more-b"><div class="tw">
-        <table>
-          <thead><tr><th></th><th>VMware <dfn data-k="vgpu">vGPU</dfn></th><th><dfn data-k="k8s">Kubernetes</dfn></th></tr></thead>
-          <tbody>
-            <tr><td>Qué recibe cada servicio</td><td><dfn data-k="vm">Máquina virtual</dfn></td><td><dfn data-k="contenedor">Contenedor</dfn></td></tr>
-            <tr><td>Migrar desde GCP</td><td>Hay que reempaquetar</td><td>Casi directo (ya usan <dfn data-k="docker">Docker / vLLM</dfn>)</td></tr>
-            <tr><td>Estudiantes</td><td>Una VM con GPU cada uno</td><td><dfn data-k="jupyter">JupyterHub</dfn> + <dfn data-k="kai">KAI</dfn> / <dfn data-k="runai">Run:ai</dfn></td></tr>
-            <tr><td>Licencia obligatoria</td><td class="d"><dfn data-k="nvaie">NVAIE</dfn> + <dfn data-k="vsphere">vSphere</dfn></td><td class="d">Ninguna</td></tr>
-            <tr><td>Equipo DTIC</td><td><span class="tag ok">Lo conoce</span></td><td><span class="tag warn">Nuevo</span></td></tr>
-          </tbody>
+      <div class="tw">
+        <table class="spec resp" style="min-width:820px">
+          <thead><tr><th>Criterio</th><th>Paradigma 1 · VMware vGPU</th><th>Paradigma 2 · Kubernetes</th><th class="ours">Proponemos · Kubernetes dentro de VMware (<dfn data-k="vks">VKS</dfn>)</th></tr></thead>
+          <tbody><tr><td><b>Unidad de carga</b></td><td>Máquina virtual con vGPU</td><td>Contenedor / pod</td><td class="ours">Contenedores en Kubernetes dentro de VMware. Las VMs de trabajo de VKS reciben la GPU por vGPU</td></tr><tr><td><b>Repatriación desde GCP</b></td><td>Re-empaquetar servicios a VMs</td><td>Casi directo</td><td class="ours">Casi directo: los mismos contenedores Docker / vLLM que hoy corren en GCP</td></tr><tr><td><b>Producción 24/7</b></td><td>Funciona</td><td>Terreno natural</td><td class="ours">Kubernetes reinicia los servicios caídos; VMware y Veeam protegen las VMs</td></tr><tr><td><b>Academia</b></td><td>VMs con vGPU</td><td>JupyterHub + scheduler de GPU</td><td class="ours">JupyterHub + KAI sobre VKS: cada estudiante recibe una partición de 24 GB o espera en cola</td></tr><tr><td><b>Reparto inteligente de GPU</b></td><td>Time-slicing vGPU + partición HW</td><td>KAI o Run:ai</td><td class="ours">Particiones MIG de 24 GB entregadas por vGPU + KAI para colas y fair-share. Run:ai opcional</td></tr><tr><td><b>Curva para el equipo</b></td><td>Más baja</td><td>Más alta</td><td class="ours">Media: DTIC sigue administrando VMware; Kubernetes solo para publicar servicios. Core capacita y acompaña</td></tr><tr><td><b>Costo de licencia</b></td><td>NVIDIA AI Enterprise por GPU + vSphere compatible</td><td>KAI gratis; Run:ai opcional</td><td class="ours">NVIDIA AI Enterprise por GPU + VMware con VKS. KAI gratis. Es la opción con más licencias</td></tr></tbody>
         </table>
       </div>
-      <p class="plain"><b>Tercera vía que no mencionan:</b> <dfn data-k="vks">Kubernetes dentro de VMware (VKS)</dfn>. Reciben los contenedores de GCP casi directo sin dejar la plataforma que ya conocen. Es lo que proponemos (ver Cómo funcionaría).</p>
-    
-<div class="two">
-      <div><span class="tag core">VMware vGPU</span><ul>
-        <li>ESXi 8.0 U3g+ o VCF 9.0.1+ <small class="d">(NVIDIA)</small></li>
-        <li>Edición: vSphere Foundation o Enterprise Plus</li>
-        <li>NVIDIA AI Enterprise EDU por GPU (4 licencias)</li>
-        <li>MIG-backed vGPU: hasta 4 particiones por GPU</li>
-        <li>Turnos dentro de cada partición: disponibles en VCF 9.1 según las notas de vGPU 19.4 y 20 → probar en la PoC</li>
-      </ul></div>
-      <div><span class="tag core">Kubernetes</span><ul>
-        <li>Opción Core: <dfn data-k="vks">VKS</dfn> dentro de VCF, sin dejar VMware</li>
-        <li>Opción sin VMware: Ubuntu 24.04 en el servidor + NVIDIA GPU Operator</li>
-        <li>Reparto: KAI (gratis) o Run:ai</li>
-        <li>MIG en contenedores sin licencia vGPU</li>
-        <li>Respaldo: Veeam Kasten</li>
-      </ul></div>
+      <p class="plain"><b>Por qué:</b> toma lo mejor de los dos. Los servicios llegan de GCP casi sin cambios (Paradigma 2) y DTIC no deja la plataforma que ya conoce (Paradigma 1). <b>Plan B:</b> si su licencia VMware no incluye VKS, Paradigma 1 puro. Si prefieren no pagar NVIDIA ni VMware, Paradigma 2 sobre Ubuntu: más barato, pero DTIC aprende Kubernetes desde cero.</p>
     </div>
-<div class="tw">
-        <table class="spec" style="min-width:600px">
-          <thead><tr><th>Licencia</th><th>VMware vGPU / VKS</th><th>Kubernetes sin VMware</th></tr></thead>
-          <tbody>
-            <tr><td><dfn data-k="nvaie">NVIDIA AI Enterprise</dfn></td><td class="d">4 GPUs · obligatoria</td><td class="d">No necesaria</td></tr>
-            <tr><td><dfn data-k="vsphere">vSphere</dfn> <dfn data-k="vcf">VVF / VCF</dfn></td><td class="d"><dfn data-k="nucleos">~112–128 núcleos (2 servidores)</dfn></td><td class="d">No aplica</td></tr>
-            <tr><td><dfn data-k="rhel">Sistema operativo</dfn></td><td class="d">Dentro de las VMs</td><td class="d">Ubuntu gratis · RHEL / <dfn data-k="openshift">OpenShift</dfn> por servidor</td></tr>
-            <tr><td>Reparto de GPU</td><td class="d">Incluido en vGPU</td><td class="d"><dfn data-k="kai">KAI</dfn> gratis · <dfn data-k="runai">Run:ai</dfn> opcional</td></tr>
-            <tr><td>Respaldo</td><td class="d"><dfn data-k="veeam">Veeam</dfn> (+ Kasten si VKS)</td><td class="d"><dfn data-k="kasten">Veeam Kasten</dfn> por nodo</td></tr>
-          </tbody>
+  </section>
+<section class="sec">
+    <header><span class="lbl">3.5</span><h2>Licencias · respuesta al §5</h2><p>Cada licencia de su tabla: si la incluimos, cómo se cotiza y cuántas.</p></header>
+    <div class="col">
+      <div class="tw">
+        <table class="spec resp lic" style="min-width:820px">
+          <colgroup><col style="width:22%"><col style="width:38%"><col style="width:24%"><col style="width:16%"></colgroup>
+          <thead><tr><th>Licencia</th><th>Qué hacemos</th><th>Cómo se cotiza</th><th>Cantidad <small>Config 1 · 2 · 3 · 4</small></th></tr></thead>
+          <tbody><tr><td><b>NVIDIA AI Enterprise (incluye vGPU)</b><br><span class="tag core" style="margin-top:6px;display:inline-block">Incluida</span></td><td>Obligatoria con nuestra propuesta: VKS usa vGPU para entregar las particiones.</td><td style="font-size:13px">Vía Lenovo, precio educación, por GPU: 3 años 7S02001KWW · 5 años 7S02001LWW</td><td>4 · 4 · 2 · 2<small>las H200 ya traen 5 años</small></td></tr><tr><td><b>vSphere Foundation / Enterprise Plus</b><br><span class="tag warn" style="margin-top:6px;display:inline-block">Según lo que tengan</span></td><td>Hace falta en los 2 servidores nuevos. VKS viene con VCF; con VVF, validar con Broadcom. La GPU funciona desde ESXi 8.0 U3g: no obliga a pasar a 9.0.1.</td><td style="font-size:13px">Broadcom, por núcleo</td><td>~64 núcleos por servidor<small>~112–128 en total</small></td></tr><tr><td><b>KAI Scheduler</b><br><span class="tag ok" style="margin-top:6px;display:inline-block">Sin costo</span></td><td>Lo instalamos en VKS para las colas y el reparto justo de academia.</td><td style="font-size:13px">Open source</td><td>—</td></tr><tr><td><b>NVIDIA Run:ai</b><br><span class="tag mut" style="margin-top:6px;display:inline-block">Opcional</span></td><td>No hace falta al inicio: KAI cubre colas y fair-share. Validar si viene incluido en “NVIDIA Enterprise”.</td><td style="font-size:13px">Vía Lenovo, educación, por GPU: 3 años 7S02004YWW · 5 años 7S020051WW</td><td>0<small>opcional, igual que NVIDIA AI Enterprise</small></td></tr><tr><td><b>Sistema operativo</b><br><span class="tag ok" style="margin-top:6px;display:inline-block">Sin costo</span></td><td>Ubuntu 24.04 en las VMs. Los nodos de VKS usan la imagen de VMware. RHEL solo si la U lo exige.</td><td style="font-size:13px">—</td><td>—</td></tr><tr><td><b>Frameworks de IA del laboratorio</b><br><span class="tag ok" style="margin-top:6px;display:inline-block">Sin costo</span></td><td>TensorFlow, PyTorch, Keras, Scikit-learn, Matplotlib y Seaborn en las imágenes de JupyterHub.</td><td style="font-size:13px">Open source</td><td>—</td></tr><tr><td><b>Tableau (DCC)</b><br><span class="tag mut" style="margin-top:6px;display:inline-block">No cotizamos</span></td><td>Fuera del alcance GPU. Grafana, Matplotlib y Seaborn cubren la visualización; si el DCC lo necesita, se compra aparte por usuario.</td><td style="font-size:13px">—</td><td>—</td></tr><tr><td><b>ChatGPT / Gemini (DCC)</b><br><span class="tag mut" style="margin-top:6px;display:inline-block">No cotizamos</span></td><td>Contradice el objetivo on-premise. vLLM ofrece una API compatible con la de OpenAI: las herramientas del DCC pueden usar los modelos locales.</td><td style="font-size:13px">—</td><td>—</td></tr><tr><td><b>Veeam</b><br><span class="tag warn" style="margin-top:6px;display:inline-block">Ampliar si falta</span></td><td>Ya lo tienen: validar capacidad para 2 servidores más. Veeam Kasten para respaldar lo que corre en VKS.</td><td style="font-size:13px">Veeam por carga · Kasten por nodo</td><td>Según capacidad actual</td></tr><tr><td><b>DCGM + Prometheus + Grafana</b><br><span class="tag ok" style="margin-top:6px;display:inline-block">Sin costo</span></td><td>Monitoreo de GPU incluido en la implementación. Servicio gestionado de Core opcional.</td><td style="font-size:13px">Open source</td><td>—</td></tr></tbody>
         </table>
-      </div></div></details>
+      </div>
       <div>
         <span class="lbl">NVIDIA AI Enterprise · 4 GPUs · <dfn data-k="lista">precio lista NVIDIA</dfn> USD</span>
         <div class="money" style="margin-top:8px">
@@ -1501,11 +1482,11 @@ details.more>summary:focus-visible{outline:2px solid var(--accent);outline-offse
           <div class="edu"><span class="d">5 años · <dfn data-k="edu">educación</dfn></span><b class="d">$18 000</b></div>
         </div>
       </div>
-      <p class="plain"><b>En simple:</b> con VMware se paga NVIDIA por cada GPU y los núcleos de VMware. Sin VMware se ahorran ambas, pero DTIC aprende Kubernetes desde cero. Si la U califica como educativa, NVIDIA baja 75%.</p>
+      <p class="plain"><b>En simple:</b> lo que se paga es NVIDIA AI Enterprise por GPU y los núcleos de VMware si su licencia actual no alcanza. Lo demás no tiene costo o queda fuera del alcance. Todo se cotiza a 3 y 5 años, con soporte.</p>
     </div>
   </section>
 <section class="sec">
-    <header><span class="lbl">3.5</span><h2>Cómo salimos de Google Cloud</h2><p>Por fases, sin apagar nada hasta validar.</p></header>
+    <header><span class="lbl">3.6</span><h2>Cómo salimos de Google Cloud</h2><p>Por fases, sin apagar nada hasta validar.</p></header>
     <div class="phase">
       <div><span class="d">1</span><b>Prueba de concepto</b><small>Migrar 1 servicio y demostrar el aislamiento producción ↔ academia en la versión exacta ofertada (lo pide el §6).</small></div>
       <div><span class="d">2</span><b>Instalación</b><small>Servidores en rack, VMware, drivers NVIDIA, particiones, VKS, VLANs, respaldo y monitoreo.</small></div>
@@ -1515,7 +1496,7 @@ details.more>summary:focus-visible{outline:2px solid var(--accent);outline-offse
     </div>
   </section>
 <section class="sec">
-    <header><span class="lbl">3.6</span><h2>Soporte y capacitación</h2><p>Quién responde y qué aprende DTIC.</p></header>
+    <header><span class="lbl">3.7</span><h2>Soporte y capacitación</h2><p>Quién responde y qué aprende DTIC.</p></header>
     <div class="two">
       <div><span class="tag core">Soporte</span><ul>
         <li><b>Nivel 1:</b> mesa de ayuda Core, en español; opción 24/7 para producción</li>

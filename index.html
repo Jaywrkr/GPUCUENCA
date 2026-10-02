@@ -829,6 +829,18 @@ details.more>summary:focus-visible{outline:2px solid var(--accent);outline-offse
 .orq{table-layout:fixed}.orq td,.orq th{white-space:normal!important}.resp th .tag{display:inline-block;margin-top:4px}
 .resp td{vertical-align:top}
 .lic{table-layout:fixed}.lic td,.lic th{white-space:normal!important;overflow-wrap:anywhere}.lic td small{display:block;color:var(--ink-3);font-size:12px}
+
+.bdiag{display:block;width:100%;height:auto;min-width:760px}
+.gl3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line)}
+.gl3>div{padding:16px 18px;display:flex;flex-direction:column;gap:8px;font-size:14px}
+.gl3>div+div{border-left:1px solid var(--line)}
+.gl3 .rec{background:var(--b10)}
+.gl3>div{min-width:0}.gl3 .tag{white-space:normal;align-self:flex-start}
+@media (max-width:700px){.gl3{grid-template-columns:1fr}.gl3>div+div{border-left:0;border-top:1px solid var(--line)}}
+.src{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:14px}
+.src li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px}
+.src .ok{color:var(--ok);font-weight:700}.src .wn{color:var(--warn);font-weight:700}
+.src a{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -838,7 +850,7 @@ details.more>summary:focus-visible{outline:2px solid var(--accent);outline-offse
   <div class="in">
     <div class="top">
       <span class="lbl">Coresolutions · Preventa · <dfn data-k="rfi">RFI</dfn></span>
-      <span style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><span class="lbl">DTIC · Universidad de Cuenca · actualizado 29.09.2026</span><a class="ubtn" href="#u">Entender el proyecto <i>→</i></a></span>
+      <span style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><span class="lbl">DTIC · Universidad de Cuenca · actualizado 01.10.2026</span><a class="ubtn" href="#u">Entender el proyecto <i>→</i></a></span>
     </div>
     <h1>GPU on-premise UCuenca</h1>
     <p class="say"><b>Salir de Google Cloud</b> y montar un <b>laboratorio de IA</b> en el mismo proyecto. Sin compartir <dfn data-k="gpu">GPU</dfn> física entre ambos.</p>
@@ -859,6 +871,7 @@ details.more>summary:focus-visible{outline:2px solid var(--accent);outline-offse
     <a class="tab todo" href="#e1" role="tab" id="t1" aria-controls="e1"><span class="d">01</span>El pedido<span class="st">Preguntas pendientes</span></a>
     <a class="tab pend" href="#e4" role="tab" id="t4" aria-controls="e4"><span class="d">02</span>La solución<span class="st">En curso</span></a>
     <a class="tab pend" href="#e4p" role="tab" id="t4p" aria-controls="e4p"><span class="d">03</span>Cómo funcionaría<span class="st">Propuesta</span></a>
+    <a class="tab pend" href="#e6" role="tab" id="t6" aria-controls="e6"><span class="d">03b</span>Sin VMware<span class="st">Alternativa</span></a>
     <a class="tab todo" href="#e5" role="tab" id="t5" aria-controls="e5"><span class="d">04</span>Cumplimiento y pasos<span class="st">Validar con Lenovo</span></a>
     <a class="tab gl" href="#g" role="tab" id="tg" aria-controls="g"><span class="d">A–Z</span>Glosario<span class="st">&nbsp;</span></a>
     <a class="tab utab" href="#u"><span class="d">LAB</span>Entender<span class="st">el proyecto</span></a>
@@ -1459,11 +1472,11 @@ details.more>summary:focus-visible{outline:2px solid var(--accent);outline-offse
       <div class="tw">
         <table class="spec resp orq" style="min-width:980px">
           <colgroup><col style="width:14%"><col style="width:16%"><col style="width:16%"><col style="width:27%"><col style="width:27%"></colgroup>
-          <thead><tr><th>Criterio</th><th>Paradigma 1 · VMware vGPU</th><th>Paradigma 2 · Kubernetes</th><th class="ours">Propuesta A · Kubernetes dentro de VMware (<dfn data-k="vks">VKS</dfn>) <span class="tag core">Recomendada</span></th><th class="ours2">Propuesta B · Kubernetes sin VMware <span class="tag mut">Alternativa</span></th></tr></thead>
+          <thead><tr><th>Criterio</th><th>Paradigma 1 · VMware vGPU</th><th>Paradigma 2 · Kubernetes</th><th class="ours">Propuesta A · Kubernetes dentro de VMware (<dfn data-k="vks">VKS</dfn>) <span class="tag core">Recomendada</span></th><th class="ours2">Propuesta B · Kubernetes sin VMware <span class="tag mut">Alternativa</span> <a href="#e6" style="font-weight:500;font-size:12px">detalle en 03b →</a></th></tr></thead>
           <tbody><tr><td><b>Unidad de carga</b></td><td>Máquina virtual con vGPU</td><td>Contenedor / pod</td><td class="ours">Contenedores en Kubernetes dentro de VMware. Las VMs de trabajo de VKS reciben la GPU por vGPU</td><td class="ours2">Contenedores en Kubernetes instalado directo sobre Ubuntu 24.04, sin hipervisor</td></tr><tr><td><b>Repatriación desde GCP</b></td><td>Re-empaquetar servicios a VMs</td><td>Casi directo</td><td class="ours">Casi directo: los mismos contenedores Docker / vLLM que hoy corren en GCP</td><td class="ours2">Casi directo: los mismos contenedores de GCP</td></tr><tr><td><b>Producción 24/7</b></td><td>Funciona</td><td>Terreno natural</td><td class="ours">Kubernetes reinicia los servicios caídos; VMware y Veeam protegen las VMs</td><td class="ours2">Kubernetes reinicia los servicios caídos; respaldo con Veeam Kasten</td></tr><tr><td><b>Academia</b></td><td>VMs con vGPU</td><td>JupyterHub + scheduler de GPU</td><td class="ours">JupyterHub + KAI sobre VKS: cada estudiante recibe una partición de 24 GB o espera en cola</td><td class="ours2">JupyterHub + KAI: misma experiencia para el estudiante</td></tr><tr><td><b>Reparto inteligente de GPU</b></td><td>Time-slicing vGPU + partición HW</td><td>KAI o Run:ai</td><td class="ours">Particiones MIG de 24 GB entregadas por vGPU + KAI para colas y fair-share. Run:ai opcional</td><td class="ours2">Particiones MIG de 24 GB con NVIDIA GPU Operator (gratis) + KAI. Sin vGPU. Run:ai opcional</td></tr><tr><td><b>Curva para el equipo</b></td><td>Más baja</td><td>Más alta</td><td class="ours">Media: DTIC sigue administrando VMware; Kubernetes solo para publicar servicios. Core capacita y acompaña</td><td class="ours2">Alta: DTIC administra Linux y Kubernetes. Core implementa, capacita y puede dar soporte gestionado</td></tr><tr><td><b>Costo de licencia</b></td><td>NVIDIA AI Enterprise por GPU + vSphere compatible</td><td>KAI gratis; Run:ai opcional</td><td class="ours">NVIDIA AI Enterprise por GPU + VMware con VKS. KAI gratis. Es la opción con más licencias</td><td class="ours2">Sin VMware ni NVIDIA AI Enterprise obligatorios. Solo Kasten por nodo. OpenShift (IBM) si quieren soporte empresarial de Kubernetes, con costo</td></tr></tbody>
         </table>
       </div>
-      <p class="plain"><b>A · recomendada:</b> toma lo mejor de los dos paradigmas. Los servicios llegan de GCP casi sin cambios y DTIC no deja el VMware que ya conoce. <b>B · sin VMware:</b> mismo resultado para funcionarios y estudiantes, y bastante más barata en licencias, pero toda la operación pasa a Linux y Kubernetes, que DTIC no conoce. Si su licencia VMware no incluye VKS y no quieren B, queda el Paradigma 1 puro.</p>
+      <p class="plain"><b>A · recomendada:</b> toma lo mejor de los dos paradigmas. Los servicios llegan de GCP casi sin cambios y DTIC no deja el VMware que ya conoce. <b>B · sin VMware:</b> mismo resultado para funcionarios y estudiantes, y bastante más barata en licencias, pero toda la operación pasa a Linux y Kubernetes, que DTIC no conoce (detalle completo en la pestaña <a href="#e6">03b · Sin VMware</a>). Si su licencia VMware no incluye VKS y no quieren B, queda el Paradigma 1 puro.</p>
     </div>
   </section>
 <section class="sec">
@@ -1473,7 +1486,7 @@ details.more>summary:focus-visible{outline:2px solid var(--accent);outline-offse
         <table class="spec resp lic" style="min-width:820px">
           <colgroup><col style="width:22%"><col style="width:38%"><col style="width:24%"><col style="width:16%"></colgroup>
           <thead><tr><th>Licencia</th><th>Qué hacemos</th><th>Cómo se cotiza</th><th>Cantidad <small>Config 1 · 2 · 3 · 4</small></th></tr></thead>
-          <tbody><tr><td><b>NVIDIA AI Enterprise (incluye vGPU)</b><br><span class="tag core" style="margin-top:6px;display:inline-block">Incluida</span></td><td>Obligatoria con nuestra propuesta: VKS usa vGPU para entregar las particiones.</td><td style="font-size:13px">Vía Lenovo, precio educación, por GPU: 3 años 7S02001KWW · 5 años 7S02001LWW</td><td>4 · 4 · 2 · 2<small>las H200 ya traen 5 años</small></td></tr><tr><td><b>vSphere Foundation / Enterprise Plus</b><br><span class="tag warn" style="margin-top:6px;display:inline-block">Según lo que tengan</span></td><td>Hace falta en los 2 servidores nuevos. VKS viene con VCF; con VVF, validar con Broadcom. La GPU funciona desde ESXi 8.0 U3g: no obliga a pasar a 9.0.1.</td><td style="font-size:13px">Broadcom, por núcleo</td><td>~64 núcleos por servidor<small>~112–128 en total</small></td></tr><tr><td><b>KAI Scheduler</b><br><span class="tag ok" style="margin-top:6px;display:inline-block">Sin costo</span></td><td>Lo instalamos en VKS para las colas y el reparto justo de academia.</td><td style="font-size:13px">Open source</td><td>—</td></tr><tr><td><b>NVIDIA Run:ai</b><br><span class="tag mut" style="margin-top:6px;display:inline-block">Opcional</span></td><td>No hace falta al inicio: KAI cubre colas y fair-share. Validar si viene incluido en “NVIDIA Enterprise”.</td><td style="font-size:13px">Vía Lenovo, educación, por GPU: 3 años 7S02004YWW · 5 años 7S020051WW</td><td>0<small>opcional, igual que NVIDIA AI Enterprise</small></td></tr><tr><td><b>Sistema operativo</b><br><span class="tag ok" style="margin-top:6px;display:inline-block">Sin costo</span></td><td>Ubuntu 24.04 en las VMs. Los nodos de VKS usan la imagen de VMware. RHEL solo si la U lo exige.</td><td style="font-size:13px">—</td><td>—</td></tr><tr><td><b>Frameworks de IA del laboratorio</b><br><span class="tag ok" style="margin-top:6px;display:inline-block">Sin costo</span></td><td>TensorFlow, PyTorch, Keras, Scikit-learn, Matplotlib y Seaborn en las imágenes de JupyterHub.</td><td style="font-size:13px">Open source</td><td>—</td></tr><tr><td><b>Tableau (DCC)</b><br><span class="tag mut" style="margin-top:6px;display:inline-block">No cotizamos</span></td><td>Fuera del alcance GPU. Grafana, Matplotlib y Seaborn cubren la visualización; si el DCC lo necesita, se compra aparte por usuario.</td><td style="font-size:13px">—</td><td>—</td></tr><tr><td><b>ChatGPT / Gemini (DCC)</b><br><span class="tag mut" style="margin-top:6px;display:inline-block">No cotizamos</span></td><td>Contradice el objetivo on-premise. vLLM ofrece una API compatible con la de OpenAI: las herramientas del DCC pueden usar los modelos locales.</td><td style="font-size:13px">—</td><td>—</td></tr><tr><td><b>Veeam</b><br><span class="tag warn" style="margin-top:6px;display:inline-block">Ampliar si falta</span></td><td>Ya lo tienen: validar capacidad para 2 servidores más. Veeam Kasten para respaldar lo que corre en VKS.</td><td style="font-size:13px">Veeam por carga · Kasten por nodo</td><td>Según capacidad actual</td></tr><tr><td><b>DCGM + Prometheus + Grafana</b><br><span class="tag ok" style="margin-top:6px;display:inline-block">Sin costo</span></td><td>Monitoreo de GPU incluido en la implementación. Servicio gestionado de Core opcional.</td><td style="font-size:13px">Open source</td><td>—</td></tr></tbody>
+          <tbody><tr><td><b>NVIDIA AI Enterprise (incluye vGPU)</b><br><span class="tag core" style="margin-top:6px;display:inline-block">Incluida</span></td><td>Obligatoria con la Propuesta A: VKS usa vGPU para entregar las particiones. Con la Propuesta B (pestaña 03b) no hace falta.</td><td style="font-size:13px">Vía Lenovo, precio educación, por GPU: 3 años 7S02001KWW · 5 años 7S02001LWW</td><td>4 · 4 · 2 · 2<small>las H200 ya traen 5 años</small></td></tr><tr><td><b>vSphere Foundation / Enterprise Plus</b><br><span class="tag warn" style="margin-top:6px;display:inline-block">Según lo que tengan</span></td><td>Hace falta en los 2 servidores nuevos. VKS viene con VCF; con VVF, validar con Broadcom. La GPU funciona desde ESXi 8.0 U3g: no obliga a pasar a 9.0.1.</td><td style="font-size:13px">Broadcom, por núcleo</td><td>~64 núcleos por servidor<small>~112–128 en total</small></td></tr><tr><td><b>KAI Scheduler</b><br><span class="tag ok" style="margin-top:6px;display:inline-block">Sin costo</span></td><td>Lo instalamos en VKS para las colas y el reparto justo de academia.</td><td style="font-size:13px">Open source</td><td>—</td></tr><tr><td><b>NVIDIA Run:ai</b><br><span class="tag mut" style="margin-top:6px;display:inline-block">Opcional</span></td><td>No hace falta al inicio: KAI cubre colas y fair-share. Validar si viene incluido en “NVIDIA Enterprise”.</td><td style="font-size:13px">Vía Lenovo, educación, por GPU: 3 años 7S02004YWW · 5 años 7S020051WW</td><td>0<small>opcional, igual que NVIDIA AI Enterprise</small></td></tr><tr><td><b>Sistema operativo</b><br><span class="tag ok" style="margin-top:6px;display:inline-block">Sin costo</span></td><td>Ubuntu 24.04 en las VMs. Los nodos de VKS usan la imagen de VMware. RHEL solo si la U lo exige.</td><td style="font-size:13px">—</td><td>—</td></tr><tr><td><b>Frameworks de IA del laboratorio</b><br><span class="tag ok" style="margin-top:6px;display:inline-block">Sin costo</span></td><td>TensorFlow, PyTorch, Keras, Scikit-learn, Matplotlib y Seaborn en las imágenes de JupyterHub.</td><td style="font-size:13px">Open source</td><td>—</td></tr><tr><td><b>Tableau (DCC)</b><br><span class="tag mut" style="margin-top:6px;display:inline-block">No cotizamos</span></td><td>Fuera del alcance GPU. Grafana, Matplotlib y Seaborn cubren la visualización; si el DCC lo necesita, se compra aparte por usuario.</td><td style="font-size:13px">—</td><td>—</td></tr><tr><td><b>ChatGPT / Gemini (DCC)</b><br><span class="tag mut" style="margin-top:6px;display:inline-block">No cotizamos</span></td><td>Contradice el objetivo on-premise. vLLM ofrece una API compatible con la de OpenAI: las herramientas del DCC pueden usar los modelos locales.</td><td style="font-size:13px">—</td><td>—</td></tr><tr><td><b>Veeam</b><br><span class="tag warn" style="margin-top:6px;display:inline-block">Ampliar si falta</span></td><td>Ya lo tienen: validar capacidad para 2 servidores más. Veeam Kasten para respaldar lo que corre en VKS.</td><td style="font-size:13px">Veeam por carga · Kasten por nodo</td><td>Según capacidad actual</td></tr><tr><td><b>DCGM + Prometheus + Grafana</b><br><span class="tag ok" style="margin-top:6px;display:inline-block">Sin costo</span></td><td>Monitoreo de GPU incluido en la implementación. Servicio gestionado de Core opcional.</td><td style="font-size:13px">Open source</td><td>—</td></tr></tbody>
         </table>
       </div>
       <div>
@@ -1516,9 +1529,195 @@ details.more>summary:focus-visible{outline:2px solid var(--accent);outline-offse
       </ul></div>
     </div>
   </section>
-  <div class="snav"><a class="btn" href="#e4">← 02 · La solución</a><a class="btn pri" href="#e5">04 · Cumplimiento y pasos →</a></div>
+  <div class="snav"><a class="btn" href="#e4">← 02 · La solución</a><a class="btn pri" href="#e6">03b · Sin VMware →</a></div>
   </div>
 </div>
+<div class="stage" id="e6" role="tabpanel" hidden>
+  <div class="shead"><div class="in"><span class="num">03b</span><div><h2>Propuesta B · sin VMware ni NVIDIA AI Enterprise</h2><p>La misma plataforma con Kubernetes directo sobre los servidores. Menos licencias, más Linux.</p></div><span class="status pend">Alternativa</span></div></div>
+  <div class="in">
+<section class="sec">
+    <header><span class="lbl">B.1</span><h2>La propuesta en una frase</h2><p>Qué cambia frente a la pestaña 03.</p></header>
+    <div class="col">
+      <p class="lede2">Cada servidor GPU lleva <b>Ubuntu 24.04 y Kubernetes (RKE2) instalados directo</b>, sin VMware. Las GPUs se parten con <b>MIG</b> usando el <b>NVIDIA GPU Operator, que es gratuito</b>, así que no hace falta vGPU ni NVIDIA AI Enterprise. Producción y academia son <b>dos clústeres separados</b>; su “cerebro” (control plane) vive en 3 VMs pequeñas por clúster sobre el VMware que la U ya tiene.</p>
+      <div class="stage-box scroll-x"><svg class="bdiag" viewBox="0 0 1000 560" role="img" aria-label="Arquitectura sin VMware: dos clústeres Kubernetes separados" font-family="IBM Plex Sans, sans-serif"><rect x="300" y="14" width="400" height="50" fill="#fff" stroke="#12151c"/><text x="500" y="36" text-anchor="middle" fill="#12151c" font-size="13" font-weight="600">Rancher · consola única de los 2 clústeres</text><text x="500" y="52" text-anchor="middle" fill="#6a7181" font-size="11" font-family="IBM Plex Mono, monospace">DTIC administra · opcional</text><rect x="20" y="92" width="960" height="120" fill="#f2f3f7" stroke="#9aa0ad" stroke-dasharray="5 4"/><text x="36" y="114" fill="#6a7181" font-size="12" font-family="IBM Plex Mono, monospace">VMware que la U ya tiene · solo 6 VMs pequeñas (sin GPU)</text><rect x="40" y="128" width="138" height="64" fill="#fff" stroke="#01095c"/><text x="109" y="157" text-anchor="middle" fill="#01095c" font-size="13" font-weight="600">Control prod. 1</text><text x="109" y="173" text-anchor="middle" fill="#6a7181" font-size="11" font-family="IBM Plex Mono, monospace">4 vCPU · 8–16 GB</text><rect x="530" y="128" width="138" height="64" fill="#fff" stroke="#2d43e7"/><text x="599" y="157" text-anchor="middle" fill="#2d43e7" font-size="13" font-weight="600">Control acad. 1</text><text x="599" y="173" text-anchor="middle" fill="#6a7181" font-size="11" font-family="IBM Plex Mono, monospace">4 vCPU · 8–16 GB</text><rect x="190" y="128" width="138" height="64" fill="#fff" stroke="#01095c"/><text x="259" y="157" text-anchor="middle" fill="#01095c" font-size="13" font-weight="600">Control prod. 2</text><text x="259" y="173" text-anchor="middle" fill="#6a7181" font-size="11" font-family="IBM Plex Mono, monospace">4 vCPU · 8–16 GB</text><rect x="680" y="128" width="138" height="64" fill="#fff" stroke="#2d43e7"/><text x="749" y="157" text-anchor="middle" fill="#2d43e7" font-size="13" font-weight="600">Control acad. 2</text><text x="749" y="173" text-anchor="middle" fill="#6a7181" font-size="11" font-family="IBM Plex Mono, monospace">4 vCPU · 8–16 GB</text><rect x="340" y="128" width="138" height="64" fill="#fff" stroke="#01095c"/><text x="409" y="157" text-anchor="middle" fill="#01095c" font-size="13" font-weight="600">Control prod. 3</text><text x="409" y="173" text-anchor="middle" fill="#6a7181" font-size="11" font-family="IBM Plex Mono, monospace">4 vCPU · 8–16 GB</text><rect x="830" y="128" width="138" height="64" fill="#fff" stroke="#2d43e7"/><text x="899" y="157" text-anchor="middle" fill="#2d43e7" font-size="13" font-weight="600">Control acad. 3</text><text x="899" y="173" text-anchor="middle" fill="#6a7181" font-size="11" font-family="IBM Plex Mono, monospace">4 vCPU · 8–16 GB</text><line x1="500" y1="64" x2="500" y2="92" stroke="#12151c"/><rect x="20" y="246" width="470" height="300" fill="#fff" stroke="#01095c" stroke-width="2"/><text x="36" y="272" fill="#01095c" font-size="15" font-weight="700">Clúster PRODUCCIÓN</text><text x="36" y="292" fill="#6a7181" font-size="11.5" font-family="IBM Plex Mono, monospace">SR650i V4 · Ubuntu 24.04 + RKE2 · sin hipervisor</text><rect x="510" y="246" width="470" height="300" fill="#fff" stroke="#2d43e7" stroke-width="2"/><text x="526" y="272" fill="#2d43e7" font-size="15" font-weight="700">Clúster ACADEMIA</text><text x="526" y="292" fill="#6a7181" font-size="11.5" font-family="IBM Plex Mono, monospace">SR650a V4 · Ubuntu 24.04 + RKE2 · sin hipervisor</text><line x1="109" y1="212" x2="255" y2="246" stroke="#01095c" stroke-opacity=".5"/><line x1="599" y1="212" x2="745" y2="246" stroke="#2d43e7" stroke-opacity=".5"/><line x1="259" y1="212" x2="255" y2="246" stroke="#01095c" stroke-opacity=".5"/><line x1="749" y1="212" x2="745" y2="246" stroke="#2d43e7" stroke-opacity=".5"/><line x1="409" y1="212" x2="255" y2="246" stroke="#01095c" stroke-opacity=".5"/><line x1="899" y1="212" x2="745" y2="246" stroke="#2d43e7" stroke-opacity=".5"/><text x="36" y="322" fill="#12151c" font-size="12" font-weight="600">GPU 0 · 2 porciones de 48 GB</text><rect x="36" y="330" width="214" height="46" fill="#01095c" stroke="#01095c"/><text x="143" y="350" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">Qwen 3.6 35B</text><text x="143" y="366" text-anchor="middle" fill="#c9cfff" font-size="11" font-family="IBM Plex Mono, monospace">código · ~40 GB</text><rect x="254" y="330" width="220" height="46" fill="#3c4cd7" stroke="#3c4cd7"/><text x="364" y="350" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">Reserva / pruebas</text><text x="364" y="366" text-anchor="middle" fill="#e9ebff" font-size="11" font-family="IBM Plex Mono, monospace">nuevas versiones</text><text x="36" y="404" fill="#12151c" font-size="12" font-weight="600">GPU 1 · 4 porciones de 24 GB</text><rect x="36" y="412" width="104" height="46" fill="#01095c" stroke="#01095c"/><text x="88" y="432" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">GPT-OSS 20B</text><text x="88" y="448" text-anchor="middle" fill="#e9ebff" font-size="11" font-family="IBM Plex Mono, monospace">+ embeddings</text><rect x="146" y="412" width="104" height="46" fill="#161f7e" stroke="#161f7e"/><text x="198" y="432" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">Ministral 8B</text><text x="198" y="448" text-anchor="middle" fill="#e9ebff" font-size="11" font-family="IBM Plex Mono, monospace">1 copia + rerank</text><rect x="256" y="412" width="104" height="46" fill="#2433a8" stroke="#2433a8"/><text x="308" y="432" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">Marker OCR</text><text x="308" y="448" text-anchor="middle" fill="#e9ebff" font-size="11" font-family="IBM Plex Mono, monospace">~4 GB</text><rect x="366" y="412" width="104" height="46" fill="#6a7181" stroke="#6a7181"/><text x="418" y="432" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">Desarrollo</text><text x="418" y="448" text-anchor="middle" fill="#e9ebff" font-size="11" font-family="IBM Plex Mono, monospace">fine-tuning</text><text x="36" y="490" fill="#6a7181" font-size="11.5">vLLM con API compatible OpenAI · Kubernetes reinicia lo que se cae</text><text x="36" y="510" fill="#6a7181" font-size="11.5">Monitoreo DCGM + Grafana · respaldo Kasten · Check Point al frente</text><text x="526" y="322" fill="#12151c" font-size="12" font-weight="600">GPU 0 · 4 porciones de 24 GB</text><rect x="526" y="330" width="104" height="46" fill="#c9cfff" stroke="#2d43e7"/><text x="578" y="350" text-anchor="middle" fill="#01095c" font-size="11" font-weight="600">Estudiante</text><text x="578" y="366" text-anchor="middle" fill="#2d43e7" font-size="11" font-family="IBM Plex Mono, monospace">24 GB</text><rect x="636" y="330" width="104" height="46" fill="#c9cfff" stroke="#2d43e7"/><text x="688" y="350" text-anchor="middle" fill="#01095c" font-size="11" font-weight="600">Estudiante</text><text x="688" y="366" text-anchor="middle" fill="#2d43e7" font-size="11" font-family="IBM Plex Mono, monospace">24 GB</text><rect x="746" y="330" width="104" height="46" fill="#c9cfff" stroke="#2d43e7"/><text x="798" y="350" text-anchor="middle" fill="#01095c" font-size="11" font-weight="600">Estudiante</text><text x="798" y="366" text-anchor="middle" fill="#2d43e7" font-size="11" font-family="IBM Plex Mono, monospace">24 GB</text><rect x="856" y="330" width="104" height="46" fill="#c9cfff" stroke="#2d43e7"/><text x="908" y="350" text-anchor="middle" fill="#01095c" font-size="11" font-weight="600">Estudiante</text><text x="908" y="366" text-anchor="middle" fill="#2d43e7" font-size="11" font-family="IBM Plex Mono, monospace">24 GB</text><text x="526" y="404" fill="#12151c" font-size="12" font-weight="600">GPU 1 · 4 porciones de 24 GB</text><rect x="526" y="412" width="104" height="46" fill="#c9cfff" stroke="#2d43e7"/><text x="578" y="432" text-anchor="middle" fill="#01095c" font-size="11" font-weight="600">Estudiante</text><text x="578" y="448" text-anchor="middle" fill="#2d43e7" font-size="11" font-family="IBM Plex Mono, monospace">24 GB</text><rect x="636" y="412" width="104" height="46" fill="#c9cfff" stroke="#2d43e7"/><text x="688" y="432" text-anchor="middle" fill="#01095c" font-size="11" font-weight="600">Estudiante</text><text x="688" y="448" text-anchor="middle" fill="#2d43e7" font-size="11" font-family="IBM Plex Mono, monospace">24 GB</text><rect x="746" y="412" width="104" height="46" fill="#c9cfff" stroke="#2d43e7"/><text x="798" y="432" text-anchor="middle" fill="#01095c" font-size="11" font-weight="600">Estudiante</text><text x="798" y="448" text-anchor="middle" fill="#2d43e7" font-size="11" font-family="IBM Plex Mono, monospace">24 GB</text><rect x="856" y="412" width="104" height="46" fill="#c9cfff" stroke="#2d43e7"/><text x="908" y="432" text-anchor="middle" fill="#01095c" font-size="11" font-weight="600">Estudiante</text><text x="908" y="448" text-anchor="middle" fill="#2d43e7" font-size="11" font-family="IBM Plex Mono, monospace">24 GB</text><text x="526" y="490" fill="#6a7181" font-size="11.5">JupyterHub + KAI: 8 a la vez con porción propia, el resto en cola</text><text x="526" y="510" fill="#6a7181" font-size="11.5">Crece a 4 GPUs = 16 porciones · sin red compartida con producción</text></svg></div>
+      <p class="plain"><b>Para funcionarios y estudiantes no cambia nada</b> respecto a la Propuesta A: los mismos chatbots, el mismo JupyterHub. Cambia quién administra qué y cuánto se paga en licencias.</p>
+    </div>
+  </section>
+<section class="sec">
+    <header><span class="lbl">B.2</span><h2>A contra B</h2><p>Lo que de verdad cambia entre las dos propuestas.</p></header>
+    <div class="tw">
+      <table class="spec" style="min-width:720px">
+        <colgroup><col style="width:22%"><col style="width:39%"><col style="width:39%"></colgroup>
+        <thead><tr><th>Tema</th><th>A · Kubernetes dentro de VMware (VKS)</th><th>B · Kubernetes sin VMware</th></tr></thead>
+        <tbody>
+          <tr><td><b>Cómo llega la GPU</b></td><td>MIG + vGPU a las VMs de Kubernetes</td><td>MIG directo al contenedor con GPU Operator</td></tr>
+          <tr><td><b>NVIDIA AI Enterprise</b></td><td>Obligatoria (por la vGPU)</td><td><span class="tag ok">No hace falta</span></td></tr>
+          <tr><td><b>Núcleos VMware nuevos</b></td><td>~64 por servidor si su licencia no alcanza</td><td><span class="tag ok">Ninguno</span>: solo 6 VMs chicas en su VMware actual</td></tr>
+          <tr><td><b>Aislamiento prod. ↔ academia</b></td><td>Servidores físicos distintos</td><td>Servidores físicos distintos y además clústeres distintos</td></tr>
+          <tr><td><b>Quién administra</b></td><td>DTIC en vCenter, como hoy</td><td>DTIC en Rancher y línea de comandos Linux</td></tr>
+          <tr><td><b>Soporte de software</b></td><td>NVIDIA y Broadcom, escalado por Core</td><td>Comunidad open source + Core. SUSE (RKE2/Rancher) o Canonical (Ubuntu) con costo, si lo quieren</td></tr>
+          <tr><td><b>Respaldo</b></td><td>Veeam para VMs + Kasten</td><td>Kasten (o Velero, gratis) + Veeam para las 6 VMs de control</td></tr>
+          <tr><td><b>Curva para DTIC</b></td><td>Media</td><td>Alta: Core implementa, capacita y puede operar</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+<section class="sec">
+    <header><span class="lbl">B.3</span><h2>Cómo se arma el clúster</h2><p>Tres formas posibles. Recomendamos la tercera.</p></header>
+    <div class="col">
+      <div class="gl3">
+        <div><span class="tag mut">1 · Un clúster por servidor, todo adentro</span><p>Cada servidor es su propio clúster de un solo nodo. Lo más simple, pero si ese nodo se reinicia, se reinicia también el control del clúster.</p></div>
+        <div><span class="tag crit">2 · Un clúster con los dos servidores</span><p>No recomendado: producción y academia compartirían el control del clúster, y con 2 nodos no hay quórum (etcd necesita 3 para tolerar una falla). Rompe el aislamiento que pide la U.</p></div>
+        <div class="rec"><span class="tag core">3 · Dos clústeres, control en VMs · recomendado</span><p>Cada clúster tiene 3 VMs de control en el VMware actual (quórum real) y su servidor GPU como trabajador. Separación total, alta disponibilidad del control y una sola consola con Rancher.</p></div>
+      </div>
+      <p class="plain"><b>Si un día no quieren depender de VMware ni para esto:</b> las 6 VMs pueden ser 3 servidores pequeños o pasar a la opción 1. Si las VMs de control caen, los modelos que ya corren siguen respondiendo; solo no se pueden desplegar cambios hasta que vuelvan.</p>
+    </div>
+  </section>
+<section class="sec">
+    <header><span class="lbl">B.4</span><h2>Producción: cómo se reparten las GPUs</h2><p>Las 2 GPUs del servidor de producción, con particiones MIG distintas en cada una.</p></header>
+    <div class="col">
+      <div class="tw">
+        <table class="spec" style="min-width:640px">
+          <thead><tr><th>GPU</th><th>Partición MIG</th><th>Qué corre</th><th>VRAM aprox.</th></tr></thead>
+          <tbody>
+            <tr><td rowspan="2"><b>GPU 0</b></td><td class="d">2g.48gb</td><td>Asistente de código · Qwen 3.6 35B</td><td class="d">~40 GB</td></tr>
+            <tr><td class="d">2g.48gb</td><td>Reserva: probar versiones nuevas antes de cambiar</td><td class="d">—</td></tr>
+            <tr><td rowspan="4"><b>GPU 1</b></td><td class="d">1g.24gb</td><td>Chatbot RAG · GPT-OSS 20B + nomic-embed-text</td><td class="d">~13 GB</td></tr>
+            <tr><td class="d">1g.24gb</td><td>Ministral 3 8B, <b>una sola copia</b> para Oracle, resoluciones y buzón + reranker y bge-m3</td><td class="d">~9–11 GB</td></tr>
+            <tr><td class="d">1g.24gb</td><td>OCR documental · Marker</td><td class="d">~4 GB</td></tr>
+            <tr><td class="d">1g.24gb</td><td>Desarrollo y fine-tuning (no productivo)</td><td class="d">~14 GB</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="two">
+        <div><span class="tag core">Cómo se sirve</span><ul>
+          <li>Cada modelo corre en <b>vLLM</b>, con API compatible con OpenAI: las aplicaciones solo cambian la URL de GCP por la local</li>
+          <li>Kubernetes pide la porción exacta (por ejemplo <span class="d">nvidia.com/mig-1g.24gb: 1</span>) y reinicia el servicio si falla</li>
+          <li>Los modelos se guardan en el NVMe local: arrancan en segundos</li>
+        </ul></div>
+        <div><span class="tag warn">A tener en cuenta</span><ul>
+          <li>Una porción de 24 GB tiene ~1/4 de la potencia de la GPU: suficiente para estos modelos, se mide en la prueba</li>
+          <li>Qwen deja ~8 GB para contexto en 48 GB. Si se queda corto, la GPU 0 va entera a Qwen (4g.96gb) y la reserva pasa a la porción de desarrollo</li>
+          <li>La configuración MIG se aplica sola al arrancar (MIG manager del GPU Operator)</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+<section class="sec">
+    <header><span class="lbl">B.5</span><h2>Academia: 16 estudiantes en 8 porciones</h2><p>Cómo varios estudiantes usan el servidor sin pisarse.</p></header>
+    <div class="col">
+      <div class="three">
+        <div><span class="tag info">Entrar</span><ol class="steps2">
+          <li>JupyterHub en el navegador, con la cuenta institucional (Microsoft / LDAP, a confirmar)</li>
+          <li>Elige perfil: <b>GPU 24 GB</b>, <b>solo CPU</b> o (opcional) <b>GPU compartida</b></li>
+          <li>Se abre su cuaderno con PyTorch, TensorFlow y Scikit-learn listos</li>
+          <li>Sus archivos quedan en una carpeta personal en el storage de la U (NFS)</li>
+        </ol></div>
+        <div><span class="tag info">Repartir</span><ol class="steps2">
+          <li>Cada cuaderno con GPU recibe una porción de 24 GB, solo para él</li>
+          <li><b>KAI Scheduler</b> pone en cola a quien llega cuando las 8 están ocupadas</li>
+          <li>Colas por materia o docente con cuotas y reparto justo (fair-share)</li>
+          <li>Trabajos largos van como “jobs” en lote, de noche o en horas libres</li>
+        </ol></div>
+        <div><span class="tag info">Liberar</span><ol class="steps2">
+          <li>Cuaderno inactivo ~30 min: se apaga solo y libera la porción</li>
+          <li>Sesión máxima (~3 h) para que nadie acapare</li>
+          <li>Solo CPU para ejercicios que no necesitan GPU</li>
+          <li>Los archivos se conservan entre sesiones</li>
+        </ol></div>
+      </div>
+      <div class="tw">
+        <table class="spec" style="min-width:620px">
+          <thead><tr><th>Escenario</th><th>Con 2 GPUs (8 porciones)</th><th>Con 4 GPUs (16 porciones)</th></tr></thead>
+          <tbody>
+            <tr><td><b>16 estudiantes a la vez, cada uno su GPU</b></td><td>8 trabajan, 8 en cola o en solo CPU</td><td><span class="tag ok">Los 16</span></td></tr>
+            <tr><td><b>Con GPU compartida (time-slicing ×2)</b></td><td>16, de dos en dos por porción</td><td>Hasta 32</td></tr>
+            <tr><td><b>Costo extra</b></td><td>—</td><td>2 GPUs más en el SR650a (450 W)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="plain"><b>Ojo con la GPU compartida:</b> dos estudiantes en la misma porción se turnan la potencia pero <b>comparten los 24 GB sin aislamiento</b>; si uno llena la memoria, el otro falla. Sirve para ejercicios livianos, no para entrenar. La forma limpia de tener 16 a la vez es ampliar a 4 GPUs.</p>
+    </div>
+  </section>
+<section class="sec">
+    <header><span class="lbl">B.6</span><h2>Operación y seguridad</h2><p>Lo que Core instala y DTIC opera.</p></header>
+    <div class="tw">
+      <table class="spec" style="min-width:640px">
+        <thead><tr><th>Capa</th><th>Qué usamos</th><th>Costo</th></tr></thead>
+        <tbody>
+          <tr><td>Sistema y Kubernetes</td><td>Ubuntu 24.04 LTS + RKE2</td><td><span class="tag ok">Gratis</span> · soporte SUSE / Canonical opcional</td></tr>
+          <tr><td>Consola</td><td>Rancher</td><td><span class="tag ok">Gratis</span> · Rancher Prime opcional</td></tr>
+          <tr><td>GPU</td><td>NVIDIA GPU Operator (driver, MIG, monitoreo)</td><td><span class="tag ok">Gratis</span></td></tr>
+          <tr><td>Modelos</td><td>vLLM</td><td><span class="tag ok">Gratis</span></td></tr>
+          <tr><td>Laboratorio</td><td>JupyterHub + KAI Scheduler</td><td><span class="tag ok">Gratis</span></td></tr>
+          <tr><td>Monitoreo</td><td>DCGM + Prometheus + Grafana + XClarity</td><td><span class="tag ok">Gratis</span></td></tr>
+          <tr><td>Respaldo</td><td>Veeam Kasten (o Velero) + Veeam para las VMs de control</td><td><span class="tag warn">Kasten con soporte, por nodo</span></td></tr>
+          <tr><td>Seguridad</td><td>Check Point entre producción, academia y campus · políticas de red y permisos (RBAC) dentro de cada clúster</td><td><span class="tag warn">Si aplica</span></td></tr>
+          <tr><td>Actualizaciones</td><td>Un servidor a la vez, con la matriz de compatibilidad del GPU Operator</td><td>Servicio Core</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+<section class="sec">
+    <header><span class="lbl">B.7</span><h2>Qué se ahorra y qué se paga</h2><p>Mismo hardware que la Opción 2. Cambian las licencias.</p></header>
+    <div class="col">
+      <div class="two">
+        <div><span class="tag ok">Sale de la cotización</span><ul>
+          <li><b>NVIDIA AI Enterprise</b> de las 4 GPUs, a 3 o 5 años (ver tabla 3.5)</li>
+          <li><b>Núcleos VMware</b> para los 2 servidores nuevos (~128 núcleos)</li>
+          <li>El hardware Lenovo y la garantía Premier no cambian</li>
+        </ul></div>
+        <div><span class="tag warn">Se mantiene o se suma</span><ul>
+          <li>Veeam Kasten con soporte para producción (la versión gratis es hasta 5 nodos y sin soporte)</li>
+          <li>Más horas de implementación y capacitación en Linux y Kubernetes</li>
+          <li>Soporte gestionado Core recomendado, al menos el primer año</li>
+          <li>Opcional: soporte SUSE (RKE2/Rancher) o Canonical (Ubuntu)</li>
+        </ul></div>
+      </div>
+      <p class="plain"><b>En simple:</b> B es la opción más barata en licencias, pero mueve el gasto a servicios. Sin NVIDIA AI Enterprise <b>no hay soporte de NVIDIA para el software</b>; el hardware sigue con la garantía Lenovo.</p>
+    </div>
+  </section>
+<section class="sec">
+    <header><span class="lbl">B.8</span><h2>Lo verificado y lo que falta validar</h2><p>Revisado contra la documentación oficial al 01.10.2026.</p></header>
+    <div class="two">
+      <div><span class="tag ok">Verificado</span><ul class="src">
+        <li><span class="ok">✓</span><span>La RTX PRO 6000 Server admite MIG: 4 × 24 GB, 2 × 48 GB o 1 × 96 GB. <a href="https://docs.nvidia.com/datacenter/tesla/mig-user-guide/" target="_blank" rel="noopener">NVIDIA MIG User Guide</a></span></li>
+        <li><span class="ok">✓</span><span>El GPU Operator soporta la RTX PRO 6000 Server sobre Ubuntu 24.04 y RKE2 (Kubernetes 1.33–1.37). <a href="https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/platform-support.html" target="_blank" rel="noopener">GPU Operator · plataformas</a></span></li>
+        <li><span class="ok">✓</span><span>MIG en Kubernetes sin vGPU ni licencia, con estrategia “mixed” (perfiles distintos por GPU). <a href="https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/gpu-operator-mig.html" target="_blank" rel="noopener">GPU Operator · MIG</a></span></li>
+        <li><span class="ok">✓</span><span>KAI Scheduler: open source (Apache 2.0), colas jerárquicas y fair-share. <a href="https://github.com/NVIDIA/KAI-Scheduler" target="_blank" rel="noopener">NVIDIA/KAI-Scheduler</a></span></li>
+        <li><span class="ok">✓</span><span>JupyterHub en Kubernetes con perfiles y apagado por inactividad. <a href="https://z2jh.jupyter.org/" target="_blank" rel="noopener">Zero to JupyterHub</a></span></li>
+        <li><span class="ok">✓</span><span>RKE2 en alta disponibilidad con 3 nodos de control. <a href="https://docs.rke2.io/install/ha" target="_blank" rel="noopener">RKE2 · HA</a></span></li>
+        <li><span class="ok">✓</span><span>vLLM expone una API compatible con OpenAI. <a href="https://docs.vllm.ai/" target="_blank" rel="noopener">vLLM docs</a></span></li>
+      </ul></div>
+      <div><span class="tag warn">Validar en la prueba de concepto</span><ul class="src">
+        <li><span class="wn">!</span><span><b>Versión del driver:</b> el primero que soporta esta GPU (575.57.08) no trae MIG. Usar una rama posterior compatible con el GPU Operator.</span></li>
+        <li><span class="wn">!</span><span>Que la GPU venga en modo cómputo, listo para MIG, desde Lenovo.</span></li>
+        <li><span class="wn">!</span><span>Contexto de Qwen 35B dentro de 48 GB y rendimiento real de las porciones de 24 GB.</span></li>
+        <li><span class="wn">!</span><span>Capacidad en su VMware para 6 VMs (~24 vCPU y ~96 GB en total).</span></li>
+        <li><span class="wn">!</span><span>Login institucional que usa la U (Microsoft Entra, Google o LDAP).</span></li>
+        <li><span class="wn">!</span><span>Licenciamiento exacto de Kasten con Veeam.</span></li>
+      </ul></div>
+    </div>
+  </section>
+<section class="sec">
+    <header><span class="lbl">B.9</span><h2>Cuándo recomendar B</h2><p>Para decidir con la U.</p></header>
+    <div class="two">
+      <div><span class="tag ok">Conviene si</span><ul>
+        <li>El presupuesto no alcanza para NVIDIA AI Enterprise y VMware nuevo</li>
+        <li>DTIC quiere aprender Kubernetes o contrata la operación a Core</li>
+        <li>No piensan usar software de NVIDIA de pago (NIM, NeMo)</li>
+      </ul></div>
+      <div><span class="tag crit">No conviene si</span><ul>
+        <li>DTIC necesita administrar todo desde vCenter, como hoy</li>
+        <li>Exigen soporte del fabricante para el software de GPU</li>
+        <li>Quieren máquinas virtuales con GPU (eso sí requiere vGPU)</li>
+      </ul></div>
+    </div>
+  </section>
+  <div class="snav"><a class="btn" href="#e4p">← 03 · Cómo funcionaría</a><a class="btn pri" href="#e5">04 · Cumplimiento y pasos →</a></div>
+  </div>
+</div>
+
 <div class="stage" id="e5" role="tabpanel" hidden>
   <div class="shead"><div class="in"><span class="num">04</span><div><h2>Cumplimiento y pasos</h2><p>Los 32 requisitos, qué validar con Lenovo y qué sigue.</p></div><span class="status todo">Validar con Lenovo</span></div></div>
   <div class="in">
@@ -1636,7 +1835,7 @@ Con estos ajustes, al menos dos GPUs del mercado cumplen la especificación comp
       </ol></div>
     </div>
   </section>
-  <div class="snav"><a class="btn" href="#e4p">← 03 · Cómo funcionaría</a><span></span></div>
+  <div class="snav"><a class="btn" href="#e6">← 03b · Sin VMware</a><span></span></div>
   </div>
 </div>
 <div class="stage" id="g" role="tabpanel" aria-labelledby="tg" hidden>
